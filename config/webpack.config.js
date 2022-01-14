@@ -337,7 +337,13 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        
+        {
+  test: /\.svg$/,
+  use: [
+    { loader: 'svg-sprite-loader', options: { } },
+    'svgo-loader'
+  ]
+},
         // Handle node_modules packages that contain sourcemaps
         shouldUseSourceMap && {
           enforce: 'pre',
