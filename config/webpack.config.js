@@ -337,7 +337,15 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        // Handle node_modules packages that contain sourcemaps
+           {
+        test : /\.jsx?/,
+        include : APP_DIR,
+        loader : 'babel-loader'
+      },
+        {
+  test: /\.svg$/,
+  use: [
+    // Handle node_modules packages that contain sourcemaps
         shouldUseSourceMap && {
           enforce: 'pre',
           exclude: /@babel(?:\/|\\{1,2})runtime/,
