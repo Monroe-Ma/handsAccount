@@ -6,16 +6,23 @@ import Write from './view/Write';
 import Analysis from './view/Analysis';
 import NoMatch from './view/NoMatch';
 import Nav from 'component/Nav';
+import styled from 'styled-components';
 import {
  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
+
+const Wrapper = styled.div`
+background:#f6f6f6;
+`;
 function App() {
   return (
  
     < HashRouter>
-   <Nav/>
+     < Wrapper> 
+        <Nav />
+      
         <Routes>
           <Route path="/analysis/*"
             element={<Analysis />} />
@@ -24,7 +31,7 @@ function App() {
           <Route path="/" element={ <AccountBook />} />
           <Route path="*" element={<NoMatch/>} />
         </ Routes   >
-        
+          </ Wrapper>
     </ HashRouter>
   );
 }
