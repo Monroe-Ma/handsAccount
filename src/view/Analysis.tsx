@@ -1,9 +1,12 @@
 import React from 'react';
+import Layout from 'component/Layout';
 
 const Analysis = () => { 
 
   return (
-    <h2>统计分析</h2>
+    <Layout>
+      <h2>统计分析</h2>
+    </Layout>
   )
 
 }

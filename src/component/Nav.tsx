@@ -5,16 +5,20 @@ import styled from 'styled-components';
 const NavWrapper = styled.div`
 background: #fff;
 >ul{
-  display: flex;
+    display: flex;
   >li{
-    width: 20%;
+     text-align: center;
+    width: 25%;
     a{
-      color:#D8D8D8;
-      text-align: center;
+       display: flex;
+       align-items: center;
+       flex-direction: column;
+       color:#D8D8D8;
+       padding: 4px 0;
       .icon{
-  
-        width: 44px;
-        height: 44px;
+        width: 22px;
+        height: 22px;
+        fill: #D8D8D8;
       }
       &.selected{
         color: #333;
@@ -31,14 +35,14 @@ const Nav = () => {
       <ul>
         <li>
           <NavLink to="/" activeClassName="selected">
-            <Icon name="AccountBook-g"  />
+            <Icon name="Write-g"  />
             账本
           </NavLink>
         </li>
         <li>
           <NavLink to="/write"
              activeClassName="selected"
-          ><Icon name="Write-g" />记一笔</NavLink>
+          ><Icon name="AccountBook-g" />记一笔</NavLink>
         </li>
         <li>
           <NavLink to="/tags"

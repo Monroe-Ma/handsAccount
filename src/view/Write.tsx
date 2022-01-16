@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Layout from 'component/Layout';
 const Write = () => { 
 
   return (
+   <Layout>
     <h2>记一笔</h2>
+  </Layout>
   )
 
 }

@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Layout from 'component/Layout';
 const Tags = () => { 
 
   return (
-    <h2>标签分类</h2>
+       <Layout>
+      <h2>标签分类</h2>
+      </Layout>
   )
 
 }

@@ -1,9 +1,13 @@
 import React from 'react';
 
-const AccountBook = () => { 
 
+import Layout from 'component/Layout';
+
+const AccountBook = () => { 
   return (
-    <h2>账本</h2>
+    <Layout>
+        <h2>账本</h2>
+   </Layout>
   )
 
 }
