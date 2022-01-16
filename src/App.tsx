@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Onaccount from './view/Onaccount';
+import AccountBook from './view/AccountBook';
 import Tags from './view/Tags';
 import Write from './view/Write';
 import Analysis from './view/Analysis';
@@ -23,7 +23,7 @@ function App() {
             element={<Analysis />} />
           <Route path="write/*" element={ <Write />} />
           <Route path="tags/*"  element={ <Tags />} /> 
-          <Route path="/" element={ <Onaccount />} />
+          <Route path="/" element={ <AccountBook />} />
           <Route path="*" element={<NoMatch/>} />
         </ Routes   >
         
