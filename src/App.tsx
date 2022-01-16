@@ -21,32 +21,28 @@ function App() {
   return (
  <Wrapper>
     <Router>
-       
-           <Switch>
-           
-           <Route exact path="/">
-             <AccountBook />
-           </Route>
-           <Route exact path="/accountbook">
-             <AccountBook />
-          </Route>
-         
-          <Route exact path="/write">
-             <Write />
-          </Route>
-          <Route exact path="/tags">
-             <Tags />
-          </Route>
-         <Route exact path="/analysis">
+      <Switch>
+         <Route exact path="/">
+            <AccountBook />
+         </Route>
+         <Route exact path="/accountbook">
+            <AccountBook />
+         </Route>
+         <Route exact path="/write">
+            <Write />
+         </Route>
+         <Route exact path="/tags">
+            <Tags />
+         </Route>
+         <Route  exact path="/analysis">
             <Analysis />
          </Route>
+         <Redirect exact from='/' to='/accountbook' />
          <Route exact path="*">
-          <NoMatch/>
-        </Route> 
-       <Redirect exact from='/' to='/accountbook' />
-        
+         <NoMatch/>
+         </Route> 
       </Switch>
-      </Router>
+   </Router>
 </Wrapper>
   );
 }
