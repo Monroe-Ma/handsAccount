@@ -8,31 +8,43 @@ import NoMatch from './view/NoMatch';
 import Nav from 'component/Nav';
 import styled from 'styled-components';
 import {
- HashRouter,
-  Routes,
+ HashRouter as Router,
+  Switch,
   Route,
+   Redirect
 } from "react-router-dom";
-
 const Wrapper = styled.div`
 background:#f6f6f6;
+color: #333;
 `;
 function App() {
   return (
- 
-    < HashRouter>
-     < Wrapper> 
+ <Wrapper>
+    <Router>
         <Nav />
-      
-        <Routes>
-          <Route path="/analysis/*"
-            element={<Analysis />} />
-          <Route path="write/*" element={ <Write />} />
-          <Route path="tags/*"  element={ <Tags />} /> 
-          <Route path="/" element={ <AccountBook />} />
-          <Route path="*" element={<NoMatch/>} />
-        </ Routes   >
-          </ Wrapper>
-    </ HashRouter>
+             <Switch>
+          <Route exact path="/analysis">
+            <Analysis />
+          </Route>
+          <Route exact path="/write">
+           <Write />
+          </Route>
+          <Route exact path="/tags">
+           <Tags />
+        </Route>
+         <Route exact path="/accountbook">
+           <AccountBook />
+        </Route>
+        <Route exact path="/">
+           <AccountBook />
+        </Route>
+         <Route exact path="*">
+          <NoMatch/>
+        </Route>
+         <Redirect exact from='/' to='/accountbook' />
+      </Switch>
+      </Router>
+</Wrapper>
   );
 }
 

@@ -349,14 +349,7 @@ module.exports = function (webpackEnv) {
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
           oneOf: [
-            {
-  test: /\.svg$/,
-  use: [
-    { loader: 'svg-sprite-loader', options: { } },
-    'svgo-loader'
-  ]
-},
-             {
+               {
               test: /\.svg$/,
               use: [
                 {loader: 'svg-sprite-loader', options: {}},
@@ -365,7 +358,8 @@ module.exports = function (webpackEnv) {
                     plugins: [
                       {removeAttrs: {attrs: 'fill'}}
                     ]
-                }}
+                  }
+                }
               ]
             },
             // TODO: Merge this config once `image/avif` is in the mime-db

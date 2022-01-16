@@ -7,51 +7,47 @@ background: #fff;
 >ul{
   display: flex;
   >li{
-    width: 25%;
+    width: 20%;
     a{
-    text-align: center;
+      color:#D8D8D8;
+      text-align: center;
       .icon{
-        display: block;
+  
         width: 44px;
         height: 44px;
       }
       &.selected{
-        color: red;
+        color: #333;
         .icon{
-          fill:red;
-          color: red;
-
+          fill: #FE9C3C;
         }
       }
     }
   }
 }`;
-
 const Nav = () => {
   return<div>
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/"
-            className = { ({ isActive }) => isActive ? "selected" : '' }
-          >
-            <Icon name="AccountBook-g" />
+          <NavLink to="/" activeClassName="selected">
+            <Icon name="AccountBook-g"  />
             账本
           </NavLink>
         </li>
         <li>
           <NavLink to="/write"
-             className = { ({ isActive }) => isActive ? "selected" : '' }
+             activeClassName="selected"
           ><Icon name="Write-g" />记一笔</NavLink>
         </li>
         <li>
           <NavLink to="/tags"
-               className = { ({ isActive }) => isActive ? "selected" : '' }
+             activeClassName="selected"
           ><Icon name="Tags-g" />标签分类</NavLink>
         </li>
         <li>
           <NavLink to="/analysis"
-               className = { ({ isActive }) => isActive ? "selected" : '' }
+             activeClassName="selected"
           ><Icon name="Analysis-g" />统计分析</NavLink>
         </li>
       </ul>
