@@ -10,8 +10,6 @@ import {
  HashRouter,
   Routes,
   Route,
-  Navigate,
-  Link
 } from "react-router-dom";
 function App() {
   return (
