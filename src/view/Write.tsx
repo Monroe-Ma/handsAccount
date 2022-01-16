@@ -3,7 +3,7 @@ import Layout from 'component/Layout';
 const Write = () => { 
 
   return (
-   <Layout>
+   <Layout title = "记一笔">
     <h2>记一笔</h2>
   </Layout>
   )

@@ -4,7 +4,7 @@ import Layout from 'component/Layout';
 const Analysis = () => { 
 
   return (
-    <Layout>
+    <Layout title = "统计分析">
       <h2>统计分析</h2>
     </Layout>
   )

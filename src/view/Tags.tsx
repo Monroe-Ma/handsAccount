@@ -3,7 +3,7 @@ import Layout from 'component/Layout';
 const Tags = () => { 
 
   return (
-       <Layout>
+       <Layout title = "标签分类">
       <h2>标签分类</h2>
       </Layout>
   )
