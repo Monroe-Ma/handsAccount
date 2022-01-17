@@ -1,6 +1,8 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import styled  from 'styled-components';
 import Icon from './Icon';
+
 const Wrapper = styled.div`
 display: flex;
 background: #fff;
@@ -15,14 +17,25 @@ padding: 11px 15px;
    color: #333;
  }
 `;
+const Button = styled.button`
+border: none;
+background: #fff;
+`;
+
 type Props = {
   title: string,
 }
-const TopBar : React.FC<Props> = (props: any) => { 
+
+const TopBar: React.FC<Props> = (props: any) => { 
   const { title } = props;
+  let history = useHistory();
+
+function handleClick() {
+   history.goBack();
+  }
   return (
     <Wrapper>
-    <Icon name="ArrowLeft" />
+      <Button><Icon name="ArrowLeft"  onClick={handleClick}/></Button> 
       <p>{title}</p>
      <Icon name="" />
     </Wrapper>
