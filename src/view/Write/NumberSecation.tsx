@@ -33,7 +33,7 @@ text-align: center;
 const NumberSecation = () => { 
   return (
     <Wrapper>
-      <div className='pad'>
+      <div className='pad clearfix'>
       <button>1</button>
       <button>2</button>
       <button>3</button>

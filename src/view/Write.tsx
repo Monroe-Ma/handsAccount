@@ -3,23 +3,26 @@ import Layout from 'component/Layout';
 import styled from 'styled-components';
 import ClassiFication from "./Write/ClassiFication"
 import Output from "./Write/Output"
-import Tags from "./Write/Tags"
+import TagsSeaction from "./Write/TagsSeaction"
 import NoteSeaction from "./Write/NoteSeaction"
 import NumberSeaction from "./Write/NumberSecation"
+const WriteWrapper = styled.div`
+flex-grow: 1;
+`;
 const Write = () => { 
   return (
-  <Layout title = "记一笔">
+ 
+    <Layout title="记一笔">
+       
       <ClassiFication />
       <Output />
-      <Tags />
+      <TagsSeaction />
       <NoteSeaction />
-    <NumberSeaction/>
-        
+      <WriteWrapper>
+      <NumberSeaction/>
+        </WriteWrapper>
+      </Layout>
 
-
-
-      
-  </Layout>
   )
 }
 export default Write

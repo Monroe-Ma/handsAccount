@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon from '../../component/Icon';
+import Icon from './../../component/Icon';
+
 const Wrapper = styled.section`
   background: #fff;
   >ul{
@@ -19,7 +20,8 @@ const Wrapper = styled.section`
     }
   }
 `;
-const Tags = () => { 
+
+const TagsSeaction = () => { 
   return (
     <Wrapper>
   <ul>
@@ -67,4 +69,4 @@ const Tags = () => {
     </Wrapper>
   )
 }
-export default Tags;
+export default TagsSeaction;
