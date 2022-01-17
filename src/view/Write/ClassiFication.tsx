@@ -1,4 +1,4 @@
-import { type } from 'os';
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.section`
@@ -7,18 +7,22 @@ const Wrapper = styled.section`
      display: flex;
      justify-content: space-around;
      line-height: 20px;
-     padding: 17px 0;
+   
      >li{
        font-size: 16px;
        font-weight: 500;
        color: #999;
        position: relative;
+       padding: 17px 0;
      };
+     &.selected{
+       color: #333;
+     }
      & .selected::after{
        content:"";
-       color: #333;
        height: 4px;
        width: 29px;
+       display: block;
        background:#FD9300;
        border-radius: 2px;
        position: absolute;
@@ -28,15 +32,29 @@ const Wrapper = styled.section`
    }
 `;
 type Props = {
+value:["+" , "-"]
   
 }
 const ClassiFication= () => {
   const ClassiFicationMap = { "+": "收入", "-": "支出" };
   const [ ClassiFicationMapList ] = useState< ("+" | "-")[]>(["+" , "-"])
-  
+  // const ClassiFication<("+" | "-")[]> =useState("+")
   return <Wrapper>
     <ul>
-      <li className='selected' >住处</li>
+      {/* {ClassiFicationMapList.map(
+        (c) => {
+          <li
+            className={ClassiFication === c ? 'selected' : ""}
+        
+          
+          
+          >{ClassiFicationMap[c]}</li>
+        }
+
+      )}
+   */}
+      <li className='selected'>支出</li>
+       <li>收入</li>
     </ul>
 </Wrapper>
 }

@@ -3,21 +3,18 @@ import Layout from 'component/Layout';
 import styled from 'styled-components';
 import ClassiFication from "./Write/ClassiFication"
 import Output from "./Write/Output"
-const Tags = styled.section`
-  background: #fff;
- 
-`;
-
+import Tags from "./Write/Tags"
+import NoteSeaction from "./Write/NoteSeaction"
+import NumberSeaction from "./Write/NumberSecation"
 const Write = () => { 
   return (
   <Layout title = "记一笔">
       <ClassiFication />
-      <Output/>
-       
-     
-      <Tags>
-
-      </Tags>
+      <Output />
+      <Tags />
+      <NoteSeaction />
+    <NumberSeaction/>
+        
 
 
 
