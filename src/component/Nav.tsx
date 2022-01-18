@@ -29,29 +29,47 @@ background: #fff;
     }
   }
 }`;
+
 const Nav = () => {
+
+  // const handleActive = (match: any, location: any) => {
+  //   if (!match) {
+  //     return false;
+  //   }
+  //   // console.log(match, location);
+    
+  //   return true;
+  // }
+
   return<div>
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/AccountBook" activeClassName="selected">
+          <NavLink to="/AccountBook"
+            activeClassName="selected"
+            // isActive={handleActive}
+          >
             <Icon name="AccountBook-g"  />
             账本
           </NavLink>
         </li>
         <li>
           <NavLink to="/write"
-             activeClassName="selected"
+            activeClassName="selected"
+            // isActive={handleActive}
+            
           ><Icon name="Write-g" />记一笔</NavLink>
         </li>
         <li>
           <NavLink to="/tags"
-             activeClassName="selected"
+            activeClassName="selected"
+            //  isActive={handleActive}
           ><Icon name="Tags-g" />标签分类</NavLink>
         </li>
         <li>
           <NavLink to="/analysis"
-             activeClassName="selected"
+            activeClassName="selected"
+            //  isActive={handleActive}
           ><Icon name="Analysis-g" />统计分析</NavLink>
         </li>
       </ul>

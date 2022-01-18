@@ -20,7 +20,7 @@ padding-top: 15px;
   }
 `;
 
-const Output = () => {
+const Output :React.FC = () => {
   return <Wrapper>
     <div><span>￥</span>0.00</div>
   </Wrapper>

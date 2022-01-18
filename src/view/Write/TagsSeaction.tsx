@@ -13,56 +13,87 @@ const Wrapper = styled.section`
       width: 20%;
       padding:0 20px;
       padding-top: 20px;
-      .icon{
-        width: 27px;
-       height: 27px;
+      color: #666;
+      font-size: 14px;
+      line-height: 22px;
+      >span{
+        display: block;
+        width: 28px;
+        height: 28px;
+        border-radius: 14px;
+        background-color:#f6f6f6;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon{
+        width: 18px;
+        height: 18px;
+        fill:#ddd;
+      }
+        &.selected{
+          background-color:#FFF2E9;
+         .icon{
+           fill:#FF9400;
+          }
       }
     }
   }
+}
 `;
+type Props = {
+  value: number[],
+  onChange: (value: number[]) => void
+}
+const TagsSeaction: React.FC<Props> = (props) => {
 
-const TagsSeaction = () => { 
+  
   return (
     <Wrapper>
   <ul>
-      <li>
-        < Icon name="eat" />
+        <li>
+          <span >
+            < Icon name="eat" />
+           </span>
         餐饮
       </li>
       <li>
-        < Icon name="shopping" />
+          <span className='selected'>
+            < Icon name="shopping" />
+          </span>
         购物
       </li>
-      <li>
-        < Icon name="traffic" />
+      <li> <span >
+          < Icon name="traffic" />
+           </span>
         交通
       </li>
       <li>
-        < Icon name="entertainment" />
+       <span>  < Icon name="entertainment" /> </span>
         娱乐
       </li>
       <li>
-         < Icon name="daily" />
+         <span> < Icon name="daily" /> </span>
         日用
       </li>
       <li>
-         < Icon name="medical" />
+        <span>  < Icon name="medical" /> </span>
         医疗
       </li>
       <li>
-         < Icon name="snacks" />
+         <span> < Icon name="snacks" /> </span>
         零食
       </li>
       <li>
-         < Icon name="home" />
+        <span>  < Icon name="home" /> </span>
         房贷
       </li>
       <li>
-         < Icon name="education" />
+        <span>  < Icon name="education" /> </span>
         文教
       </li>
       <li>
-         < Icon name="add" />
+        <span>  < Icon name="add" /> </span>
         添加
         </li>
     </ul>

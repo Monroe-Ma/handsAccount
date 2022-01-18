@@ -1,4 +1,5 @@
 
+import classNames from 'classnames';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.section`
@@ -14,9 +15,10 @@ const Wrapper = styled.section`
        color: #999;
        position: relative;
        padding: 17px 0;
-     };
-     &.selected{
+       &.selected{
        color: #333;
+     }
+     
      }
      & .selected::after{
        content:"";
@@ -32,29 +34,25 @@ const Wrapper = styled.section`
    }
 `;
 type Props = {
-value:["+" , "-"]
+  value: "+" | "-";
+  onChange: (value: "+" | "-")=>void
   
 }
-const ClassiFication= () => {
+const ClassiFication: React.FC<Props> = (props) => {
   const ClassiFicationMap = { "+": "收入", "-": "支出" };
   const [ ClassiFicationMapList ] = useState< ("+" | "-")[]>(["+" , "-"])
-  // const ClassiFication<("+" | "-")[]> =useState("+")
+  const ClassiFication =props.value
   return <Wrapper>
     <ul>
-      {/* {ClassiFicationMapList.map(
-        (c) => {
+      {ClassiFicationMapList.map(
+        (c) =>
           <li
             className={ClassiFication === c ? 'selected' : ""}
-        
-          
-          
-          >{ClassiFicationMap[c]}</li>
-        }
-
+            onClick={() =>  props.onChange(c)  }
+          >
+        {ClassiFicationMap[c]} </li>
       )}
-   */}
-      <li className='selected'>支出</li>
-       <li>收入</li>
+      
     </ul>
 </Wrapper>
 }

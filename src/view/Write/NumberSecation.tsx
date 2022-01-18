@@ -30,7 +30,7 @@ text-align: center;
     }
    }
 `;
-const NumberSecation = () => { 
+const NumberSecation : React.FC = () => { 
   return (
     <Wrapper>
       <div className='pad clearfix'>

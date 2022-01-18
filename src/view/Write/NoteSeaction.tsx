@@ -17,7 +17,7 @@ display: block;
   }
 
 `;
-const NoteSeaction = () => { 
+const NoteSeaction : React.FC = () => { 
   return (
     <Wrapper>
       <Label >
