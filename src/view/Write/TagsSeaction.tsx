@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Icon from './../../component/Icon';
 
+
 const Wrapper = styled.section`
   background: #fff;
   >ul{
@@ -44,8 +45,56 @@ type Props = {
   value: number[],
   onChange: (value: number[]) => void
 }
+type tagDataType = {
+   id: string,
+   name: string
+   iconName:string
+}
 const TagsSeaction: React.FC<Props> = (props) => {
-  const [tags, setTag] = useState<string[]>(["餐饮", "购物", "交通", "娱乐", " 日用", " 医疗", "零食", "房贷", "文教"])
+  const [tags, setTag] = useState<Array<tagDataType>>([
+    {id: "0",
+      name: "餐饮",
+      iconName:"eat"
+    },
+    {id: "1",
+      name: "购物",
+      iconName:"shopping"
+    }, 
+    {id: "2",
+      name:"交通",
+      iconName:"traffic"
+    }, 
+    {
+      id: "3",
+      name:"娱乐",
+      iconName:"entertainment"
+    }, 
+    {
+      id: "4",
+      name:"日用",
+      iconName:"daily"
+    }, 
+    {
+      id: "5",
+      name:" 医疗",
+      iconName:"medical"
+    }, 
+    {
+      id: "6",
+      name:"零食",
+      iconName:"snacks"
+    }, 
+    {
+      id: "7",
+      name:"房贷",
+      iconName:"home"
+    }, 
+    {
+      id: "8",
+      name: "文教",
+      iconName:"education"
+    }, 
+  ])
   const [selectedTag, setSelectedTag] = useState<string[]>([]) 
   const onToggleTag = (tag: string) => {
     const index = selectedTag.indexOf(tag)
@@ -60,7 +109,7 @@ const TagsSeaction: React.FC<Props> = (props) => {
   const addTag = () => {
     const tagName = window.prompt("请输入标签名称")
     if(tagName!==null){
-      setTag([...tags, tagName])
+      setTag([...tags,{id:new Date().getTime().toString() ,name:tagName , iconName:"other"}])
       }
   }
   return (
@@ -68,13 +117,12 @@ const TagsSeaction: React.FC<Props> = (props) => {
       <ul>
         {tags.map(
           tag =>
-            <li key={tag}
-              onClick={()=>onToggleTag(tag)}
+            <li key={tag.id}
+              onClick={()=>onToggleTag(tag.id)}
             ><span
-                className={selectedTag.indexOf(tag) >= 0 ? 'selected' : ""}
-               ><Icon
-                  name=""
-            /></span>{tag}
+                className={selectedTag.indexOf(tag.id) >= 0 ? 'selected' : ""}
+               ><Icon name={tag.iconName }
+            /></span>{tag.name}
             </li> 
         )}
         <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
