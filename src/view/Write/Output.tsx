@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import NumberSecation from './NumberSecation';
 const Wrapper = styled.section`
   background:#fff;
-padding-top: 15px;
+  padding-top: 15px;
 
   div{
     font-size: 22px;

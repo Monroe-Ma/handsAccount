@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
 background: #f6f6f6;
@@ -30,11 +30,35 @@ text-align: center;
     }
    }
 `;
-const NumberSecation : React.FC = () => { 
+const NumberSecation: React.FC = () => { 
+  const [output, setOutput] = useState("0")
+  const padWrapper = (e:React.MouseEvent) => { 
+    const text = (e.target as HTMLButtonElement).textContent
+    console.log(text);
+    if (text === null) { return }
+    switch (text) { 
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+      case "0":
+      case ".":
+      case "清空":
+      case "删除":
+      case "OK":
+        
+    }
+  }
+  
   return (
     <Wrapper>
-      <div className='pad clearfix'>
-      <button>1</button>
+      <div className='pad clearfix' onClick={padWrapper} >
+      <button >1</button>
       <button>2</button>
       <button>3</button>
       <button>删除</button>
@@ -44,8 +68,8 @@ const NumberSecation : React.FC = () => {
       <button>清空</button>
       <button>7</button>
       <button>8</button>
-        <button>9</button>
-         <button className='save'>保存</button>
+      <button>9</button>
+      <button className='save'>保存</button>
       <button className='zero'>0</button>
       <button>.</button>
      
@@ -55,4 +79,4 @@ const NumberSecation : React.FC = () => {
       
   )
 }
-export default NumberSecation
+export default NumberSecation;

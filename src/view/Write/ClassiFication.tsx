@@ -1,5 +1,3 @@
-
-import classNames from 'classnames';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.section`
@@ -45,8 +43,9 @@ const ClassiFication: React.FC<Props> = (props) => {
   return <Wrapper>
     <ul>
       {ClassiFicationMapList.map(
-        (c) =>
+        (c, index) =>
           <li
+            key={index}
             className={ClassiFication === c ? 'selected' : ""}
             onClick={() =>  props.onChange(c)  }
           >
