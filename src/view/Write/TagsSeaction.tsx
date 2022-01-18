@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import Icon from './../../component/Icon';
 
 const Wrapper = styled.section`
@@ -46,57 +45,40 @@ type Props = {
   onChange: (value: number[]) => void
 }
 const TagsSeaction: React.FC<Props> = (props) => {
-
-  
+  const [tags,setTag] = useState<string[]>(["餐饮","购物","交通","娱乐"," 日用"," 医疗","零食","房贷","文教"])
+  const [selectedTag, setSelectedTag] = useState<string[]>([]) 
+  const onToggleTag = (tag: string) => {
+    const index = selectedTag.indexOf(tag)
+    if (index >= 0) {
+      setSelectedTag(selectedTag.filter(t => t !== tag))
+    } else {
+      setSelectedTag([...selectedTag,tag])
+    }
+  }
+  // console.log(tags);
+  // console.log(selectedTag);
+  const addTag = () => {
+    const tagName = window.prompt("请输入标签名称")
+    if(tagName!==null){
+      setTag([...tags, tagName])
+      }
+  }
   return (
     <Wrapper>
-  <ul>
-        <li>
-          <span >
-            < Icon name="eat" />
-           </span>
-        餐饮
-      </li>
-      <li>
-          <span className='selected'>
-            < Icon name="shopping" />
-          </span>
-        购物
-      </li>
-      <li> <span >
-          < Icon name="traffic" />
-           </span>
-        交通
-      </li>
-      <li>
-       <span>  < Icon name="entertainment" /> </span>
-        娱乐
-      </li>
-      <li>
-         <span> < Icon name="daily" /> </span>
-        日用
-      </li>
-      <li>
-        <span>  < Icon name="medical" /> </span>
-        医疗
-      </li>
-      <li>
-         <span> < Icon name="snacks" /> </span>
-        零食
-      </li>
-      <li>
-        <span>  < Icon name="home" /> </span>
-        房贷
-      </li>
-      <li>
-        <span>  < Icon name="education" /> </span>
-        文教
-      </li>
-      <li>
-        <span>  < Icon name="add" /> </span>
-        添加
-        </li>
-    </ul>
+      <ul>
+        {tags.map(
+          tag =>
+            <li key={tag}
+              onClick={()=>onToggleTag(tag)}
+            ><span
+                className={selectedTag.indexOf(tag) >= 0 ? 'selected' : ""}
+               ><Icon
+                  name=""
+            /></span>{tag}
+            </li> 
+        )}
+        <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
+         </ul> 
     </Wrapper>
   )
 }
