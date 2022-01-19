@@ -104,8 +104,8 @@ const TagsSeaction: React.FC<Props> = (props) => {
       setSelectedTag([...selectedTag,tag])
     }
   }
-  console.log(tags);
-  console.log(selectedTag);
+  // console.log(tags);
+  // console.log(selectedTag);
   const addTag = () => {
     const tagName = window.prompt("请输入标签名称")
     if(tagName!==null){

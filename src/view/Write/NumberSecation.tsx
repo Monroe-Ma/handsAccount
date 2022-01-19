@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
 background: #f6f6f6;
- display: flex;
- flex-direction: column;
+ /* display: flex;
+ flex-direction: column; */
+flex-grow: 1;
  .pad{
-text-align: center;
+   flex-grow: 1;
+   text-align: center;
   >button{
      background: #fff;
      border: none;
@@ -30,11 +32,17 @@ text-align: center;
     }
    }
 `;
-const NumberSecation: React.FC = () => { 
+
+
+type Props = {
+  value: number;
+  onChange: (value: number) => void
+}
+const NumberSecation: React.FC<Props> = (props) => { 
   const [output, setOutput] = useState("0")
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
-    console.log(text);
+    // console.log(text);
     if (text === null) { return }
     switch (text) { 
       case "1":
@@ -47,11 +55,24 @@ const NumberSecation: React.FC = () => {
       case "8":
       case "9":
       case "0":
+        setOutput(output + text)
+        break;
       case ".":
+        if (text.indexOf(".")>= 0) { 
+          setOutput(output + ".")
+        }
+        break;
       case "清空":
+        if (text.length >1) {
+          setOutput("0")
+        }
+         break;
       case "删除":
+        if (text.length === 1) { setOutput("0") }
+        else { text.slice(0, -1) }
+        break;
       case "OK":
-        
+         break;
     }
   }
   

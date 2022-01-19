@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import NumberSecation from './NumberSecation';
 const Wrapper = styled.section`
   background:#fff;
   padding-top: 15px;
-
   div{
     font-size: 22px;
     color: #FD9300;
@@ -21,9 +19,16 @@ const Wrapper = styled.section`
   }
 `;
 
-const Output :React.FC = () => {
+type Props = {
+  value: number
+  onChange: (value: number) => void
+// zmh: number
+}
+
+const Output: React.FC<Props> = (props) => {
+  // const { zmh } = props;
   return <Wrapper>
-    <div><span>￥</span>0.00</div>
+    <div><span>￥</span>  { props.value }</div>
   </Wrapper>
 };
 export default Output;
