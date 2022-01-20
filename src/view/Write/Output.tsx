@@ -20,15 +20,14 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: number
-  onChange: (value: number) => void
-// zmh: number
+  value: string
+  onChange: (value: string) => void
 }
 
 const Output: React.FC<Props> = (props) => {
-  // const { zmh } = props;
+  const displayValue = !props.value ? 0 : props.value
   return <Wrapper>
-    <div><span>￥</span>  { props.value }</div>
+    <div><span>￥</span>  { displayValue }</div>
   </Wrapper>
 };
 export default Output;
