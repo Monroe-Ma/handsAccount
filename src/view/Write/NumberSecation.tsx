@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
 background: #f6f6f6;
- /* display: flex;
- flex-direction: column; */
-flex-grow: 1;
  .pad{
-   flex-grow: 1;
    text-align: center;
   >button{
      background: #fff;
@@ -42,7 +38,7 @@ const NumberSecation: React.FC<Props> = (props) => {
   const [output, setOutput] = useState("0")
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
-    // console.log(text);
+    console.log(text);
     if (text === null) { return }
     switch (text) { 
       case "1":

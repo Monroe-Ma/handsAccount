@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Icon from './../../component/Icon';
 
-
 const Wrapper = styled.section`
+flex-grow: 1;
   background: #fff;
   >ul{
     display: flex;
