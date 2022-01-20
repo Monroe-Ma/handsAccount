@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
 background: #f6f6f6;
@@ -28,17 +28,15 @@ background: #f6f6f6;
     }
    }
 `;
-
-
 type Props = {
-  value: number;
-  onChange: (value: number) => void
+  value:string;
+  onChange: (value:string) => void
 }
-const NumberSecation: React.FC<Props> = (props) => { 
-  const [output, setOutput] = useState("0")
+const NumberSecation: React.FC<Props> = ({ value, onChange }) => { 
+  const [output, setOutput] = useState(value)
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
-    console.log(text);
+    // console.log(text);
     if (text === null) { return }
     switch (text) { 
       case "1":
@@ -60,7 +58,7 @@ const NumberSecation: React.FC<Props> = (props) => {
         break;
       case "清空":
         if (text.length >1) {
-          setOutput("0")
+          setOutput("")
         }
          break;
       case "删除":
@@ -70,8 +68,10 @@ const NumberSecation: React.FC<Props> = (props) => {
       case "OK":
          break;
     }
-  }
-  
+  } 
+   useEffect(() => {
+    onChange(output)
+  }, [output])
   return (
     <Wrapper>
       <div className='pad clearfix' onClick={padWrapper} >
@@ -89,11 +89,8 @@ const NumberSecation: React.FC<Props> = (props) => {
       <button className='save'>保存</button>
       <button className='zero'>0</button>
       <button>.</button>
-     
-        </div>
-
+      </div>
     </Wrapper>
-      
   )
 }
 export default NumberSecation;

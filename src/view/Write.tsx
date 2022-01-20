@@ -19,12 +19,12 @@ const defaultDate = {
   note: "",
 
 }
-const mml = {
-  zmh: 4
-}
+// const mml = {
+//   zmh: 4
+// }
 const Write: React.FC = () => { 
   const [selected, setSelected] = useState(defaultDate)
-  const [outputVal, setOutputVal] = useState(mml)
+  const [outputVal, setOutputVal] = useState<string>("")
    const onChange = (obj:Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -32,25 +32,23 @@ const Write: React.FC = () => {
     })
    }
   // console.log(setSelected)
-  const numberSeactionOnChange = (obj:Partial<typeof outputVal>) => {
-    console.log({ zmh :0 })
-    return setOutputVal({
-      ...outputVal,
-      ...obj
-    })
-
-  }
+  // const numberSeactionOnChange = (obj:Partial<typeof outputVal>) => {
+  //   return setOutputVal({
+  //     ...outputVal,
+  //     ...obj
+  //   })
+  // }
   
   return (
     <MyLayout title="记一笔">
       <ClassiFication
         value={selected.classification}
-        onChange={(classification: "+" | "-") => onChange({classification})}
+        onChange={(classification: "+" | "-") => onChange( {classification} )}
       >
       </ClassiFication >
       <Output
-        value={outputVal.zmh}
-        onChange={(zmh) =>numberSeactionOnChange({ zmh })}
+        value={outputVal}
+        onChange={setOutputVal}
        
       />
       <TagsSeaction
@@ -59,11 +57,14 @@ const Write: React.FC = () => {
       >
       </TagsSeaction >
 
-      <NoteSeaction />
+      <NoteSeaction
+        value={selected.note}
+        onChange={(note) => onChange({note})}
+      />
 
       <NumberSecation
-        value={outputVal.zmh}
-        onChange={(zmh) =>numberSeactionOnChange({ zmh })}
+        value={outputVal}
+        onChange={setOutputVal}
       />
 
 

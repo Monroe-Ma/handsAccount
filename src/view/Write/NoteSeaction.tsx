@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import  styled  from 'styled-components';
 const Wrapper = styled.div`
   background:#f6f6f6 ;
@@ -17,7 +17,12 @@ display: block;
   }
 
 `;
-const NoteSeaction : React.FC = () => { 
+type Props = {
+  value:string
+  onChange: ( value:string) =>void
+}
+const NoteSeaction: React.FC<Props> = () => { 
+  const [note,setNote] =useState("")
   return (
     <Wrapper>
       <Label >
