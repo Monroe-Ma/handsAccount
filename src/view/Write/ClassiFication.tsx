@@ -47,7 +47,7 @@ const ClassiFication: React.FC<Props> = (props) => {
           <li
             key={index}
             className={ClassiFication === c ? 'selected' : ""}
-            onClick={() =>  props.onChange(c)  }
+            onClick={() => props.onChange(c)  }
           >
         {ClassiFicationMap[c]} </li>
       )}

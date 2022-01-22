@@ -42,8 +42,8 @@ flex-grow: 1;
 }
 `;
 type Props = {
-  value: number[],
-  onChange: (value: number[]) => void
+  value: string[],
+  onChange: (value: string[]) => void
 }
 type tagDataType = {
    id: string,
@@ -95,13 +95,13 @@ const TagsSeaction: React.FC<Props> = (props) => {
       iconName:"education"
     }, 
   ])
-  const [selectedTag, setSelectedTag] = useState<string[]>([]) 
+  const [selectedTag] = useState<string[]>([]) 
   const onToggleTag = (tag: string) => {
     const index = selectedTag.indexOf(tag)
     if (index >= 0) {
-      setSelectedTag(selectedTag.filter(t => t !== tag))
+      props.onChange(selectedTag.filter(t => t !== tag))
     } else {
-      setSelectedTag([...selectedTag,tag])
+      props.onChange([...selectedTag,tag])
     }
   }
   // console.log(tags);

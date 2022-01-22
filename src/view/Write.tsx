@@ -15,7 +15,7 @@ type classification = "+" | "-";
 const defaultDate = {
   classification: "-" as classification,
   amount: 0,
-  tagsId: [] as number[],
+  tagsId: [] as string[],
   note: "",
 
 }
@@ -30,6 +30,10 @@ const Write: React.FC = () => {
    }
   return (
     <MyLayout title="记一笔">
+      {selected.classification}
+      {outputVal}
+      {selected.tagsId}
+      {selected.note }
       <ClassiFication
         value={selected.classification}
         onChange={(classification: "+" | "-") => onChange( {classification} )}
