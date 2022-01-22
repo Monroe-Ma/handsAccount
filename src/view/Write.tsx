@@ -19,26 +19,15 @@ const defaultDate = {
   note: "",
 
 }
-// const mml = {
-//   zmh: 4
-// }
 const Write: React.FC = () => { 
   const [selected, setSelected] = useState(defaultDate)
   const [outputVal, setOutputVal] = useState<string>("")
-   const onChange = (obj:Partial<typeof selected>) => {
+  const onChange = (obj:Partial<typeof selected>) => {
     setSelected({
       ...selected,
       ...obj
     })
    }
-  // console.log(setSelected)
-  // const numberSeactionOnChange = (obj:Partial<typeof outputVal>) => {
-  //   return setOutputVal({
-  //     ...outputVal,
-  //     ...obj
-  //   })
-  // }
-  
   return (
     <MyLayout title="记一笔">
       <ClassiFication
@@ -66,9 +55,6 @@ const Write: React.FC = () => {
         value={outputVal}
         onChange={setOutputVal}
       />
-
-
-     
       </MyLayout>
 
   )
