@@ -5,6 +5,7 @@ import Tags from './view/Tags';
 import Write from './view/Write';
 import Analysis from './view/Analysis';
 import NoMatch from './view/NoMatch';
+import { Tag } from 'view/Tag';
 import styled from 'styled-components';
 import {
  HashRouter as Router,
@@ -12,6 +13,7 @@ import {
   Route,
    Redirect
 } from "react-router-dom";
+
 
 const Wrapper = styled.div`
 color: #333;
@@ -30,9 +32,13 @@ function App() {
          <Route exact path="/write">
             <Write />
          </Route>
+         <Route exact path="/tags/:id">
+            <Tag />
+         </Route>  
          <Route exact path="/tags">
             <Tags />
          </Route>
+       
          <Route  exact path="/analysis">
             <Analysis />
          </Route>

@@ -3,6 +3,7 @@ import Layout from 'component/Layout';
 import { useTag } from 'hook/useTag';
 import Icon from '../component/Icon';
 import styled  from 'styled-components';
+import { Link } from 'react-router-dom';
 const TagsList = styled.ol`
 margin: 0 10px;
 display: flex;
@@ -11,44 +12,72 @@ justify-content: space-between;
 >li{
   background-color: #fff;
   width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 10px;
-  padding: 25px 0;
-     font-size: 14px;
+  font-size: 14px;
+ 
+  line-height: 28px;
+    >a{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 0;
     color: #666;
-    line-height: 28px;
-  >span{
-    width: 30px;
-    height: 30px;
-    border-radius:15px;
-    background-color: #FFF2E9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    >span{
+       width: 30px;
+       height: 30px;
+       border-radius:15px;
+       background-color: #FFF2E9;
+       display: flex;
+       align-items: center;
+       justify-content: center;
     >.icon{
       width: 16px;
       height: 16px;
-    fill: #FF9400;
+      fill: #FF9400;
     }
   }
+    }
+}
+>.newAdd{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+   >span{
+       width: 30px;
+       height: 30px;
+       border-radius:15px;
+       background-color: #FFF2E9;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    >.icon{
+      width: 16px;
+      height: 16px;
+      fill: #FF9400;
+    }
+}
 }
 `;
 const Tags = () => { 
-  const { tags,setTag,addTag}=useTag()
+  const { tags,setTag, addTag}=useTag()
   
   return (
     <Layout title="标签分类">
        <TagsList>
       {tags.map(tag => 
        
-          <li key={tag.id}>
+        <li key={tag.id}>
+          <Link to={"/tags/"+tag.id }>
           <span> <Icon name={tag.iconName }/></span> 
-          { tag.name}
-          </li>
+            {tag.name}
+            </Link>
+        </li>
+        
         )}
-         <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
+        <li className='newAdd' onClick={addTag}>
+            <span><Icon name="add" /></span>添加
+        </li>
            </TagsList>
       </Layout>
   )
