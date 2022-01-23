@@ -18,7 +18,7 @@ const NumberSecation: React.FC<Props> = ({ value, onChange }) => {
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
     if (text === null) { return }
-    if (text === "保存") { return}
+    if (text === "") { return}
     setOutput( Caculate(text, output)||"" )
   } 
    useEffect(() => {

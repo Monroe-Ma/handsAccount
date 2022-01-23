@@ -30,10 +30,6 @@ const Write: React.FC = () => {
    }
   return (
     <MyLayout title="记一笔">
-      {selected.classification}
-      {outputVal}
-      {selected.tagsId}
-      {selected.note }
       <ClassiFication
         value={selected.classification}
         onChange={(classification: "+" | "-") => onChange( {classification} )}
