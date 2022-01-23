@@ -46,10 +46,12 @@ type Props = {
   value: string[],
   onChange: (value: string[]) => void
 }
-
 const TagsSeaction: React.FC<Props> = (props) => {
-  const {tags,setTag }=useTag()
-  const [selectedTag] = useState<string[]>([]) 
+  const {tags,setTag,addTag }=useTag()
+  // const [selectedTag] = useState<string[]>(props.value) 
+  const selectedTag = props.value;
+  // console.log(props.value)
+  // console.log(selectedTag);
   const onToggleTag = (tag: string) => {
     const index = selectedTag.indexOf(tag)
     if (index >= 0) {
@@ -60,12 +62,6 @@ const TagsSeaction: React.FC<Props> = (props) => {
   }
   // console.log(tags);
   // console.log(selectedTag);
-  const addTag = () => {
-    const tagName = window.prompt("请输入标签名称")
-    if(tagName!==null){
-      setTag([...tags,{id:new Date().getTime().toString() ,name:tagName , iconName:"other"}])
-      }
-  }
   return (
     <Wrapper>
       <ul>

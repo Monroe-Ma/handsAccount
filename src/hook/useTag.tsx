@@ -49,6 +49,12 @@ const useTag = () => {
       iconName:"education"
     }, 
     ])
-  return {tags,setTag}
+   const addTag = () => {
+    const tagName = window.prompt("请输入标签名称")
+    if(tagName!==null){
+      setTag([...tags,{id:new Date().getTime().toString() ,name:tagName , iconName:"other"}])
+      }
+  }
+  return {tags,setTag,addTag}
 }
 export { useTag}

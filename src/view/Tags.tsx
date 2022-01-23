@@ -4,9 +4,10 @@ import { useTag } from 'hook/useTag';
 import Icon from '../component/Icon';
 import styled  from 'styled-components';
 const TagsList = styled.ol`
+margin: 0 10px;
 display: flex;
 flex-wrap: wrap;
-justify-content: space-around;
+justify-content: space-between;
 >li{
   background-color: #fff;
   width: 30%;
@@ -15,6 +16,9 @@ justify-content: space-around;
   align-items: center;
   margin-top: 10px;
   padding: 25px 0;
+     font-size: 14px;
+    color: #666;
+    line-height: 28px;
   >span{
     width: 30px;
     height: 30px;
@@ -29,18 +33,10 @@ justify-content: space-around;
     fill: #FF9400;
     }
   }
-  >p{
-    font-size: 14px;
-    color: #666;
-    line-height: 28px;
-  }
 }
 `;
 const Tags = () => { 
-  const { tags,setTag}=useTag()
-
-
-
+  const { tags,setTag,addTag}=useTag()
   
   return (
     <Layout title="标签分类">
@@ -49,10 +45,10 @@ const Tags = () => {
        
           <li key={tag.id}>
           <span> <Icon name={tag.iconName }/></span> 
-          <p>{ tag.name}</p>
+          { tag.name}
           </li>
-       
         )}
+         <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
            </TagsList>
       </Layout>
   )

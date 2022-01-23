@@ -22,7 +22,11 @@ const defaultDate = {
 const Write: React.FC = () => { 
   const [selected, setSelected] = useState(defaultDate)
   const [outputVal, setOutputVal] = useState<string>("")
-  const onChange = (obj:Partial<typeof selected>) => {
+  const onChange = (obj: Partial<typeof selected>) => {
+    console.log({
+      ...selected,
+      ...obj
+    })
     setSelected({
       ...selected,
       ...obj
