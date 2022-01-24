@@ -77,7 +77,7 @@ const useTag = () => {
       tagClone.splice(index, 1, { id: id, name: obj.name })
       setTag(tagClone)
    }
-  const deleteTag = (id: number, obj: { name: string }) => {
+  const deleteTag = (id: number) => {
     const index = indexOfTag(id)
     const tagClone = JSON.parse(JSON.stringify(tags))
       tagClone.splice(index)
