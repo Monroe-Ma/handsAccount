@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from 'component/Layout';
-import { useTag } from 'hook/useTag';
+import useTag from "hook/useTag"
 import Icon from '../component/Icon';
 import styled  from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -60,13 +60,12 @@ justify-content: space-between;
 }
 `;
 const Tags = () => { 
-  const { tags,setTag, addTag}=useTag()
+  const { tags,addTag}=useTag()
   
   return (
     <Layout title="标签分类">
        <TagsList>
       {tags.map(tag => 
-       
         <li key={tag.id}>
           <Link to={"/tags/"+tag.id }>
           <span> <Icon name={tag.iconName }/></span> 

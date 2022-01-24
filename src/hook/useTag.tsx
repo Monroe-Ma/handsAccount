@@ -1,60 +1,62 @@
+import { creatId } from 'lib/creatId';
 import React, {useState}from 'react';
 type tagDataType = {
-   id: string,
+   id: number,
    name: string
    iconName:string
 }
-const useTag = () => {
-    const [tags, setTag] = useState<Array<tagDataType>>([
-    {id: "0",
+const defaultTagData = [
+    {id: creatId(),
       name: "餐饮",
       iconName:"eat"
     },
-    {id: "1",
+    {id: creatId(),
       name: "购物",
       iconName:"shopping"
     }, 
-    {id: "2",
+    {id: creatId(),
       name:"交通",
       iconName:"traffic"
     }, 
     {
-      id: "3",
+      id:creatId(),
       name:"娱乐",
       iconName:"entertainment"
     }, 
     {
-      id: "4",
+      id: creatId(),
       name:"日用",
       iconName:"daily"
     }, 
     {
-      id: "5",
+      id:creatId(),
       name:" 医疗",
       iconName:"medical"
     }, 
     {
-      id: "6",
+      id: creatId(),
       name:"零食",
       iconName:"snacks"
     }, 
     {
-      id: "7",
+      id: creatId(),
       name:"房贷",
       iconName:"home"
     }, 
     {
-      id: "8",
+      id: creatId(),
       name: "文教",
       iconName:"education"
     }, 
-    ])
+    ]
+const useTag = () => {
+    const [tags, setTag] = useState<tagDataType[]>(defaultTagData)
    const addTag = () => {
     const tagName = window.prompt("请输入标签名称")
     if(tagName!==null){
-      setTag([...tags,{id:new Date().getTime().toString() ,name:tagName , iconName:"other"}])
+      setTag([...tags,{id:creatId() ,name:tagName , iconName:"other"}])
       }
   }
   return {tags,setTag,addTag}
 }
-export { useTag}
+export default useTag

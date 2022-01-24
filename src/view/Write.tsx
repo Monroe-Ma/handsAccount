@@ -15,7 +15,7 @@ type classification = "+" | "-";
 const defaultDate = {
   classification: "-" as classification,
   amount: 0,
-  tagsId: [] as string[],
+  tagsId: [] as number[],
   note: "",
 
 }

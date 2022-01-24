@@ -1,4 +1,4 @@
-import { useTag } from 'hook/useTag';
+import useTag  from 'hook/useTag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Icon from './../../component/Icon';
@@ -43,25 +43,22 @@ flex-grow: 1;
 }
 `;
 type Props = {
-  value: string[],
-  onChange: (value: string[]) => void
+  value: number[],
+  onChange: (value: number[]) => void
 }
 const TagsSeaction: React.FC<Props> = (props) => {
   const {tags,setTag,addTag }=useTag()
   // const [selectedTag] = useState<string[]>(props.value) 
-  const selectedTag = props.value;
-  // console.log(props.value)
-  // console.log(selectedTag);
-  const onToggleTag = (tag: string) => {
-    const index = selectedTag.indexOf(tag)
+  const selectedTagIds = props.value;
+ 
+  const onToggleTag = (tag: number) => {
+    const index = selectedTagIds.indexOf(tag)
     if (index >= 0) {
-      props.onChange(selectedTag.filter(t => t !== tag))
+      props.onChange(selectedTagIds.filter(t => t !== tag))
     } else {
-      props.onChange([...selectedTag,tag])
+      props.onChange([...selectedTagIds,tag])
     }
   }
-  // console.log(tags);
-  // console.log(selectedTag);
   return (
     <Wrapper>
       <ul>
@@ -70,7 +67,7 @@ const TagsSeaction: React.FC<Props> = (props) => {
             <li key={tag.id}
               onClick={()=>onToggleTag(tag.id)}
             ><span
-                className={selectedTag.indexOf(tag.id) >= 0 ? 'selected' : ""}
+                className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ""}
                ><Icon name={tag.iconName }
             /></span>{tag.name}
             </li> 

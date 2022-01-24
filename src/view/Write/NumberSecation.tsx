@@ -23,7 +23,7 @@ const NumberSecation: React.FC<Props> = ({ value, onChange }) => {
   } 
    useEffect(() => {
     onChange(output)
-  }, [output])
+  },[output])
   return (
     <Wrapper>
       <div className='pad clearfix' onClick={padWrapper} >

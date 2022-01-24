@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-
 const Caculate = (text:string, output:string) => { 
     
     switch (text) { 
@@ -21,21 +19,22 @@ const Caculate = (text:string, output:string) => {
         // console.log(output);
       
       case ".":
-        if (output.indexOf(".")>= 0) { 
-        return output + "."
+        if (output.indexOf(".") >= 0) {
+          return output + "."
         }
-       
+        break;
       case "清空":
         if (output.length > 1) {
           return ""
         }
       case "删除":
         if (output.length === 1) {
-        return "0"
+          return "0"
         }
         else {
           return output.slice(0, -1)
         }
+        break;
       case "OK":
     }
 } 
