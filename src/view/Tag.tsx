@@ -4,9 +4,7 @@ import useTag from "hook/useTag"
 import React from 'react';
 import { useHistory, useParams } from "react-router-dom"
 import styled from 'styled-components';
-// const Input = styled.input`
-// background-color: #fff;
-// `;
+import Icon from '../component/Icon';
 const Label = styled.label`
   display: block;
   font-size: 17px;
@@ -45,9 +43,35 @@ right: 0;
     color:#FF9400 ;
   }
 `;
+const NoExist = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #666;
+/* margin-top: 280px; */
+line-height: 30px;
+position: fixed;
+top: 50%;
+bottom: 50%;
+left: 0;
+right: 0;
+.icon{
+  width: 106px;
+  height: 106px;
+  fill:#ddd;
+  position: fixed;
+  top: 36%;
+  bottom: 0;
+  left: 36%;
+  right: 0;
+}
+
+`;
 type Params = {
   id: string
 }
+
 const Tag = () => {
   const { tags, findTag, updateTag, deleteTag } = useTag()
   const { id } = useParams<Params>()
@@ -57,8 +81,9 @@ const Tag = () => {
   const onClickBack = () => {
   history.goBack()
   }
-    return <Layout title="编辑标签">
-      <Label >
+  const tagContext = () => (
+    <div>
+     <Label >
         标签名
         <input type="text"
           value={tag.name}
@@ -70,9 +95,16 @@ const Tag = () => {
         />
       </Label>
       <Button>
-        <button className="cancel" >删除</button>
+        <button className="cancel" onClick={()=>deleteTag(tag.id) }>删除</button>
         <button onClick={onClickBack}>保存</button>
       </Button>
+      </div>
+  )
+    return <Layout title="编辑标签">
+      {tag ? tagContext() :
+        <NoExist>
+         < Icon name="tag"/>
+        标签不存在</NoExist>}
     </Layout>
   }
 

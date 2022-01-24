@@ -29,7 +29,6 @@ type Props = {
 const TopBar: React.FC<Props> = (props: any) => { 
   const { title } = props;
   let history = useHistory();
-
 function handleClick() {
    history.goBack();
   }
