@@ -1,5 +1,5 @@
 import { creatId } from 'lib/creatId';
-import React, {useState}from 'react';
+import  {useState}from 'react';
 type tagDataType = {
    id: number,
    name: string
@@ -56,7 +56,34 @@ const useTag = () => {
     if(tagName!==null){
       setTag([...tags,{id:creatId() ,name:tagName , iconName:"other"}])
       }
+   }
+  const findTag = (id: number) => {
+    // console.log(tags, id)
+     return tags.filter(tag => tag.id === id)[0]
   }
-  return {tags,setTag,addTag}
+  const indexOfTag = (id: number) => {
+    let reslut=-1
+    for (let i = 0; i < tags.length;i++) { 
+      if (tags[i].id === id) { 
+        reslut = i;
+        break;
+      }
+       return reslut
+    }
+  }
+  const updateTag = (id: number, obj: {name:string})=>{
+    const index = indexOfTag(id)
+    const tagClone = JSON.parse(JSON.stringify(tags))
+      tagClone.splice(index, 1, { id: id, name: obj.name })
+      setTag(tagClone)
+   }
+  const deleteTag = (id: number, obj: { name: string }) => {
+    const index = indexOfTag(id)
+    const tagClone = JSON.parse(JSON.stringify(tags))
+      tagClone.splice(index)
+      setTag(tagClone)
+  }
+  
+  return {tags,setTag,addTag,findTag,updateTag,deleteTag}
 }
 export default useTag
