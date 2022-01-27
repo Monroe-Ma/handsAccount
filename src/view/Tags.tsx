@@ -21,7 +21,8 @@ justify-content: space-between;
       flex-direction: column;
       align-items: center;
       padding: 25px 0;
-    color: #666;
+      color: #666;
+
     >span{
        width: 30px;
        height: 30px;
@@ -65,8 +66,11 @@ const Tags = () => {
     <Layout title="标签分类">
        <TagsList>
       {tags.map(tag => 
-        <li key={tag.id}>
-          <Link to={"/tags/"+tag.id }>
+        <li key={tag.id}
+       
+        >
+          <Link to={"/tags/" + tag.id}
+           className='oneLine'>
           <span> <Icon name={tag.iconName }/></span> 
             {tag.name}
             </Link>

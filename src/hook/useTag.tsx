@@ -1,11 +1,19 @@
 import { creatId } from 'lib/creatId';
-import  {useState}from 'react';
+import  {useEffect, useState}from 'react';
+import Icon from '../component/Icon';
 type tagDataType = {
    id: number,
    name: string
    iconName?:string
 }
-const defaultTagData = [
+// const defaultTagData = 
+const useTag = () => {
+  const [tags, setTag] = useState<tagDataType[]>([])
+  useEffect(() => { 
+    // setTag(JSON.parse(window.localStorage.getItem("tags") || "[]"))
+   let localStorage = JSON.parse(window.localStorage.getItem("tags") || "[]")
+    if (localStorage.length ===0) {
+       localStorage = [
     {id: creatId(),
       name: "餐饮",
       iconName:"eat"
@@ -49,8 +57,12 @@ const defaultTagData = [
       iconName:"education"
     }, 
     ]
-const useTag = () => {
-    const [tags, setTag] = useState<tagDataType[]>(defaultTagData)
+    }
+    setTag(localStorage)
+  },[])
+  useEffect(() => { 
+   window.localStorage.setItem("tags",JSON.stringify(tags))
+  },[tags])
    const addTag = () => {
     const tagName = window.prompt("请输入标签名称")
     if(tagName!==null){
@@ -71,13 +83,13 @@ const useTag = () => {
        return reslut
     }
   }
-  const updateTag = (id: number, obj: { name: string }) => {
-    
+  const updateTag = (id: number, obj: { name: string },) => {
     // const index = indexOfTag(id)
     // const tagClone = JSON.parse(JSON.stringify(tags))
     // tagClone.splice(index, 1, { id: id, name: obj.name })
     // setTag(tagClone)
-    setTag(tags.map(tag => tag.id === id ? { id, name: obj.name }:tag), )}
+    setTag(tags.map(tag => tag.id === id ? { id, name: obj.name, iconName:tag.iconName } : tag),)
+  }
   
   const deleteTag = (id: number) => {
     // const index = indexOfTag(id)

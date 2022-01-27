@@ -65,7 +65,8 @@ const TagsSeaction: React.FC<Props> = (props) => {
         {tags.map(
           tag =>
             <li key={tag.id}
-              onClick={()=>onToggleTag(tag.id)}
+              onClick={() => onToggleTag(tag.id)}
+              className='oneLine'
             ><span
                 className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ""}
                ><Icon name={tag.iconName }
