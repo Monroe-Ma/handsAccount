@@ -1,6 +1,6 @@
 import { creatId } from 'lib/creatId';
 import  {useEffect, useState}from 'react';
-import Icon from '../component/Icon';
+import useUpdate from './useUpdate';
 type tagDataType = {
    id: number,
    name: string
@@ -60,7 +60,7 @@ const useTag = () => {
     }
     setTag(localStorage)
   },[])
-  useEffect(() => { 
+  useUpdate(() => { 
    window.localStorage.setItem("tags",JSON.stringify(tags))
   },[tags])
    const addTag = () => {
