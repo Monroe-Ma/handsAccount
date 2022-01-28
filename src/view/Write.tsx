@@ -6,32 +6,40 @@ import Output from "./Write/Output"
 import TagsSeaction from "./Write/TagsSeaction"
 import NoteSeaction from "./Write/NoteSeaction"
 import NumberSecation from './Write/NumberSecation';
+import { useRecords } from 'hook/useRecound';
+import { type } from 'os';
 
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
 `;
 type classification = "+" | "-";
-const defaultDate = {
+const defaultData = {
   classification: "-" as classification,
-  amount: 0,
-  tagsId: [] as number[],
-  note: "",
-
+  tagIds: [] as number[],
+  note: "" as string,
+}
+const account = {
+  outputVal:"0"
 }
 const Write: React.FC = () => { 
-  const [selected, setSelected] = useState(defaultDate)
+  const [selected, setSelected] = useState(defaultData)
   const [outputVal, setOutputVal] = useState<string>("")
   const onChange = (obj: Partial<typeof selected>) => {
-    console.log({
-      ...selected,
-      ...obj
-    })
     setSelected({
       ...selected,
       ...obj
     })
-   }
+  }
+  const { addRecounds }=useRecords()
+  const submit = () => { 
+    // console.log(selected, outputVal)
+    if (addRecounds({ ...selected, outputVal: Number(outputVal) })) { 
+      alert("保存成功");
+      setSelected(defaultData);
+      setOutputVal('')
+    }
+  }
   return (
     <MyLayout title="记一笔">
       <ClassiFication
@@ -45,8 +53,8 @@ const Write: React.FC = () => {
        
       />
       <TagsSeaction
-        value={selected.tagsId}
-        onChange={(tagsId) => onChange({tagsId})}
+        value={selected.tagIds}
+        onChange={(tagIds) => onChange({tagIds})}
       >
       </TagsSeaction >
 
@@ -58,6 +66,7 @@ const Write: React.FC = () => {
       <NumberSecation
         value={outputVal}
         onChange={setOutputVal}
+        onOk={submit}
       />
       </MyLayout>
 

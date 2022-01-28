@@ -34,8 +34,6 @@ const Caculate = (text:string, output:string) => {
         else {
           return output.slice(0, -1)
         }
-        break;
-      case "OK":
     }
 } 
   

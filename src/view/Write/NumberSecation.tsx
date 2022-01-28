@@ -3,10 +3,11 @@ import { Wrapper } from "./NumberSeaction/Wrapper";
 import Caculate from "./NumberSeaction/Caculate"
 type Props = {
   value:string;
-  onChange: (value:string) => void
+  onChange: (value: string) => void
+  onOk?:()=>void
 }
-const NumberSecation: React.FC<Props> = ({ value, onChange }) => { 
-  const [output, _setOutput] = useState(value)
+const NumberSecation: React.FC<Props> = (props) => { 
+  const [output, _setOutput] = useState(props.value)
   const setOutput = (output: string)=>{ 
     if (output.length >16) {
    output=output.slice(0, 16)
@@ -18,11 +19,17 @@ const NumberSecation: React.FC<Props> = ({ value, onChange }) => {
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
     if (text === null) { return }
-    if (text === "") { return}
+    if (text === "") { return }
+     if (text === "保存") { 
+       if (props.onOk) {
+         props.onOk()
+       }
+        return
+      }
     setOutput( Caculate(text, output)||"" )
   } 
    useEffect(() => {
-    onChange(output)
+    props.onChange(output)
   },[output])
   return (
     <Wrapper>

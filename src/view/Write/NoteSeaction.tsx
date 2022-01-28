@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import  styled  from 'styled-components';
+import React, { useRef, useState, useEffect } from 'react';
+import styled from 'styled-components';
+
 const Wrapper = styled.div`
   background:#f6f6f6 ;
 `;
@@ -17,18 +18,26 @@ display: block;
   }
 
 `;
+
 type Props = {
   value:string
   onChange: ( value:string) =>void
 }
 const NoteSeaction: React.FC<Props> = (props) => { 
-  const [note] = useState("")
+  // const [note] = useState("")
+  console.log(props)
+
+  useEffect(() => {
+    
+  }, [props.value])
+  
   const inputRef = useRef<HTMLInputElement>(null)
   const onBlur=() => {
     if (inputRef.current !== null) { 
       props.onChange(inputRef.current.value)
     }
   }
+
   return (
     <Wrapper>
       <Label >
@@ -36,10 +45,12 @@ const NoteSeaction: React.FC<Props> = (props) => {
         <input type="text" placeholder='在这里添加备注'
           ref={inputRef}
           onBlur={onBlur}
-          defaultValue={note}
+          defaultValue={props.value}
+          // value={props.value}
         />
       </Label>
     </Wrapper>
   )
 }
+
 export default NoteSeaction
