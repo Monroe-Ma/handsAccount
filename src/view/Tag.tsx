@@ -4,6 +4,7 @@ import React from 'react';
 import { useHistory, useParams } from "react-router-dom"
 import styled from 'styled-components';
 import Icon from '../component/Icon';
+import { Input } from 'component/Input';
 const Label = styled.label`
   display: block;
   font-size: 17px;
@@ -82,17 +83,10 @@ const Tag = () => {
   }
   const tagContext = () => (
     <div>
-     <Label >
-        标签名
-        <input type="text"
-          value={tag.name}
-          onChange={(e) => {
-            updateTag(tag.id, { name: e.target.value });
-            // console.log(updateTag);
-          }
-          }
-        />
-      </Label>
+      <Input label={'标签名'}
+        value={tag.name}
+        onChange={(e) => { updateTag(tag.id, { name: e.target.value}) }}
+      />
       <Button>
         <button className="cancel" onClick={()=>deleteTag(tag.id) }>删除</button>
         <button onClick={onClickBack}>保存</button>
