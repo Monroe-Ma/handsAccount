@@ -19,9 +19,6 @@ const defaultData = {
   tagIds: [] as number[],
   note: "" as string,
 }
-const account = {
-  outputVal:"0"
-}
 const Write: React.FC = () => { 
   const [selected, setSelected] = useState(defaultData)
   const [outputVal, setOutputVal] = useState<string>("")
