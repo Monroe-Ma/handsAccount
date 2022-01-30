@@ -90,7 +90,14 @@ const useTag = () => {
     // setTag(tagClone)
     setTag(tags.map(tag => tag.id === id ? { id, name: obj.name, iconName:tag.iconName } : tag),)
   }
-  
+  const getIconName = (id: number) => { 
+    const tag =tags.filter(tag => tag.id === id)[0]
+    return  tag ? tag.iconName : ""
+  }
+   const getTagName = (id: number) => { 
+    const tag =tags.filter(tag => tag.id === id)[0]
+    return  tag ? tag.name: ""
+  }
   const deleteTag = (id: number) => {
     // const index = indexOfTag(id)
     // const tagClone = JSON.parse(JSON.stringify(tags))
@@ -99,6 +106,6 @@ const useTag = () => {
     setTag(tags.filter(tag=> tag.id!==id))
   }
   
-  return {tags,setTag,addTag,findTag,updateTag,deleteTag}
+  return {tags,setTag,addTag,findTag,updateTag,deleteTag,getIconName,getTagName}
 }
 export default useTag

@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Month } from './Month';
 import Icon from '../../component/Icon';
+import { useRecords } from 'hook/useRecound';
+import useTag from 'hook/useTag';
+import day from "dayjs"
+type tagDataType = {
+   id: number,
+   name: string
+   iconName?:string
+}
 const Preparation = styled.div`
 display: flex;
 justify-content: space-between;
@@ -72,12 +80,14 @@ const Bill = styled.ul`
 }
 `;
 const Monthly = () => { 
-
+  const { getIconName, getTagName} = useTag()
+  const { records } =useRecords()
   return <div >
-
     <Month />
     <Preparation>
-    <div>02/07<span>周四</span></div>
+      {/* <div>{records.map((r) => { 
+        return day(r.createdAt).format("YYYY年MM月DD日")
+      })}<span>周四</span></div> */}
     <ol>
       <li className='selected'>全部</li>
       <li>支出</li>
@@ -85,16 +95,25 @@ const Monthly = () => {
     </ol>
     </Preparation>
     <Bill>
-      <li>
-        <div className='listName'>
-         <span className='iconBg'> <Icon name="eat" /></span>
-          <p>餐饮
-            <span>16:33</span>
-          </p>
-        </div>
-        <div className='account'>-15.00</div>
-      </li> 
+      {records.map((r) => {
+        return <li>
+          <div className='listName'>
+            <span className='iconBg'>
+              <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
+            </span>
+            <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
+              <span>{day(r.createdAt).format("HH:mm:ss")}</span>
+            </p>
+          </div>
+          <div className='account'>
+            { r.outputVal}
+          </div>
+        </li>
+      })
+      }
     </Bill>
   </div >
 }
 export {Monthly }
+
+

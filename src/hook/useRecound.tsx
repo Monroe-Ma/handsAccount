@@ -5,7 +5,7 @@ export type RecordsItem = {
   tagIds: number[];
   note: string;
   classification: "-" | "+";
-  outputVal: number;
+  outputVal: number ;
   createdAt:string
 }
 export type NewRecordsItem = Omit<RecordsItem, "createdAt">
@@ -33,7 +33,7 @@ const useRecords = () => {
       return true
 
    }
-  return {addRecounds}
+  return {addRecounds,records}
  }
 
 export { useRecords}

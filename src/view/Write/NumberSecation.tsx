@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Wrapper } from "./NumberSeaction/Wrapper";
 import Caculate from "./NumberSeaction/Caculate"
 type Props = {
-  value:string;
-  onChange: (value: string) => void
+  value:number ;
+  onChange: (value: number) => void
   onOk?:()=>void
 }
 const NumberSecation: React.FC<Props> = (props) => { 
-  const [output, _setOutput] = useState(props.value)
-  const setOutput = (output: string)=>{ 
-    if (output.length >16) {
-   output=output.slice(0, 16)
-    } else if(output.length===0){
-      output="0"
+  const [output, _setOutput] = useState(props.value.toString())
+  const setOutput = (output: string) => { 
+    let newOutput: string;
+    if (output.length > 16) {
+      newOutput = output.slice(0, 16)
+    } else if (output.length === 0) {
+      newOutput = "0"
+    } else {
+      newOutput = output
     }
-    _setOutput(output)
+    // console.log(parseInt(newOutput));
+    _setOutput(newOutput)
+     props.onChange(Number(newOutput))
   }
   const padWrapper = (e:React.MouseEvent) => { 
     const text = (e.target as HTMLButtonElement).textContent
@@ -25,12 +30,11 @@ const NumberSecation: React.FC<Props> = (props) => {
          props.onOk()
        }
         return
-      }
+     }
+    console.log(Caculate(text, output));
     setOutput( Caculate(text, output)||"" )
   } 
-   useEffect(() => {
-    props.onChange(output)
-  },[output])
+
   return (
     <Wrapper>
       <div className='pad clearfix' onClick={padWrapper} >

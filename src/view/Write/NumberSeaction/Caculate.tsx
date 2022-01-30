@@ -16,13 +16,15 @@ const Caculate = (text:string, output:string) => {
         } else {
          return  output + text
         }
-        // console.log(output);
-      
+ 
+          // console.log(output);
       case ".":
         if (output.indexOf(".") >= 0) {
-          return output + "."
+          return output 
+        } else { 
+           return output + "."
         }
-        break;
+
       case "清空":
         if (output.length > 1) {
           return ""

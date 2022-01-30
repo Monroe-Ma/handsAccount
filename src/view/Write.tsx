@@ -21,7 +21,7 @@ const defaultData = {
 }
 const Write: React.FC = () => { 
   const [selected, setSelected] = useState(defaultData)
-  const [outputVal, setOutputVal] = useState<string>("")
+  const [outputVal, setOutputVal] = useState<number>(0.00)
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -34,13 +34,12 @@ const Write: React.FC = () => {
     if (addRecounds({ ...selected, outputVal: Number(outputVal) })) { 
       alert("保存成功");
       setSelected(defaultData);
-      setOutputVal('')
+      setOutputVal(0)
     }
   }
   return (
 
     <MyLayout title="记一笔">
-      { selected.note}
       <ClassiFication
         value={selected.classification}
         onChange={(classification: "+" | "-") => onChange( {classification} )}
@@ -49,7 +48,6 @@ const Write: React.FC = () => {
       <Output
         value={outputVal}
         onChange={setOutputVal}
-       
       />
       <TagsSeaction
         value={selected.tagIds}

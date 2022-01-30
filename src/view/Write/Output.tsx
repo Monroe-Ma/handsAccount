@@ -20,8 +20,8 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string
-  onChange: (value: string) => void
+  value: number
+  onChange: (value: number) => void
 }
 
 const Output: React.FC<Props> = (props) => {
