@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Month } from './Month';
 import Icon from '../../component/Icon';
 import { useRecords } from 'hook/useRecound';
 import useTag from 'hook/useTag';
 import day from "dayjs"
-type tagDataType = {
-   id: number,
-   name: string
-   iconName?:string
-}
+import Category from './Category';
 const Preparation = styled.div`
 display: flex;
 justify-content: space-between;
@@ -22,20 +18,6 @@ margin:17px 10px;
     color: #666;
   }
 }
->ol{
-    display: flex;
-    background: #EEEEEE;
-    color: #999;
-    border-radius: 4px;
-    >li{
-      padding: 8px 11px;
-      &.selected{
-        background:#FFB101;
-        color: #fff;
-         border-radius: 4px;
-      }
-    }
-  }
 `;
 const Bill = styled.ul`
 >li{
@@ -79,23 +61,33 @@ const Bill = styled.ul`
 }
 }
 `;
+type categoryType = "+" | "-" | "o";
 const Monthly = () => { 
   const { getIconName, getTagName} = useTag()
-  const { records } =useRecords()
+  const { records } = useRecords()
+  const [category,setCategory] =useState<categoryType>("-")
+  const onChange = (category: categoryType) => { 
+    setCategory(category)
+  }
+  const selectCategory = records.filter((r) => {
+    if (category === '+' || category === '-') {
+      return r.classification===category
+    } else {
+      return r
+    }
+  })
+
   return <div >
     <Month />
     <Preparation>
       {/* <div>{records.map((r) => { 
         return day(r.createdAt).format("YYYY年MM月DD日")
       })}<span>周四</span></div> */}
-    <ol>
-      <li className='selected'>全部</li>
-      <li>支出</li>
-      <li>收入</li>
-    </ol>
+        
+      <Category value={category} onChange={(category: "+" | "-" | "o") => onChange(category) } />
     </Preparation>
     <Bill>
-      {records.map((r) => {
+      {selectCategory.map((r) => {
         return <li>
           <div className='listName'>
             <span className='iconBg'>
