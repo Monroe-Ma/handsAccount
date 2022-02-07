@@ -93,36 +93,49 @@ const Monthly = () => {
   if (a[0] < b[0]) return 1;
     return 0;
   })
+
+  const Header = styled.h3`
+   padding: 10px;
+  `;
+
   const date = new Date()
   console.log(dayjs(date).format("MM月DD日"));
     console.log(date.getDate());
   return <div >
     <Month />
     <Preparation>
-      {/* <div>{records.map((r) => { 
-        return day(r.createdAt).format("YYYY年MM月DD日")
-      })}<span>周四</span></div> */}
       <div className='date'>{ day(date).format("MM月DD日") }</div>
       <Category value={category} onChange={(category: "+" | "-" | "o") => onChange(category) } />
     </Preparation>
-    <Bill>
-      {selectCategory.map((r) => {
-        return <li >
-          <div className='listName'>
-            <span className='iconBg'>
-              <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
-            </span>
-            <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
-              <span>{day(r.createdAt).format("HH:mm:ss")}</span>
-            </p>
-          </div>
-          <div className='account'>
-            { r.outputVal}
-          </div>
-        </li>
-      })
-      }
-    </Bill>
+
+    {array.map(([time, records], i) => 
+           
+        <div key={i}>
+          <Header>
+            {time}
+          </Header>
+          {records.map((r) => {
+            return <Bill>
+              <li >
+              <div className='listName'>
+                <span className='iconBg'>
+                   <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
+                </span>
+                <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
+                   <span>{day(r.createdAt).format("HH:mm:ss")}</span>
+                </p>
+                </div>
+                <div className='account'>
+               { r.outputVal }
+              </div>
+            </li>
+            </Bill>
+      })}
+        </div>
+      
+      ) }
+
+    
   </div >
 }
 export {Monthly }
