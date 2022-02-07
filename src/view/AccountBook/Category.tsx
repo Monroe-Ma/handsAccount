@@ -23,7 +23,7 @@ const Category:React.FC<Props> = (props) => {
   const [categoryMapList]= useState<("+" | "-" | "o")[]>(["o" , "-" ,"+" ]);
   const category = props.value
 
-
+ 
   return <Wrapper>
     {categoryMapList.map((c) =>
       <li key={c}

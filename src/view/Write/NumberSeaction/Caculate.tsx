@@ -29,6 +29,7 @@ const Caculate = (text:string, output:string) => {
         if (output.length > 1) {
           return ""
         }
+        break
       case "删除":
         if (output.length === 1) {
           return "0"

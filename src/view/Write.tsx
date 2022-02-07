@@ -7,7 +7,6 @@ import TagsSeaction from "./Write/TagsSeaction"
 import NoteSeaction from "./Write/NoteSeaction"
 import NumberSecation from './Write/NumberSecation';
 import { useRecords } from 'hook/useRecound';
-import { type } from 'os';
 
 const MyLayout = styled(Layout)`
 display: flex;

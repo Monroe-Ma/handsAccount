@@ -1,5 +1,5 @@
 import useTag  from 'hook/useTag';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Icon from './../../component/Icon';
 
@@ -47,7 +47,7 @@ type Props = {
   onChange: (value: number[]) => void
 }
 const TagsSeaction: React.FC<Props> = (props) => {
-  const {tags,setTag,addTag }=useTag()
+  const {tags,addTag }=useTag()
   // const [selectedTag] = useState<string[]>(props.value) 
   const selectedTagIds = props.value;
  

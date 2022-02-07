@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useEffect } from 'react';
 import useUpdate from './useUpdate';
 export type RecordsItem = {
@@ -33,7 +33,7 @@ const useRecords = () => {
       return true
 
    }
-  return {addRecounds,records}
+  return {addRecounds,records,}
  }
 
 export { useRecords}

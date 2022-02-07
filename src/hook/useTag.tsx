@@ -106,6 +106,6 @@ const useTag = () => {
     setTag(tags.filter(tag=> tag.id!==id))
   }
   
-  return {tags,setTag,addTag,findTag,updateTag,deleteTag,getIconName,getTagName}
+  return {tags,setTag,addTag,findTag,updateTag,deleteTag,getIconName,getTagName,indexOfTag}
 }
 export default useTag

@@ -16,18 +16,12 @@ flex-direction: column;
 `;
 const Layout = (props: any) => {
   return <Wrapper>
-
     <TopBar {...props} >
-    
     </TopBar > 
- 
-  
-      <Main>
+    <Main>
       { props.children}
-      </Main>
+    </Main>
      <Nav/>
       </Wrapper>
-
 }
-
 export default Layout;

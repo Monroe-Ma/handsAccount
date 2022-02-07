@@ -5,23 +5,6 @@ import { useHistory, useParams } from "react-router-dom"
 import styled from 'styled-components';
 import Icon from '../component/Icon';
 import { Input } from 'component/Input';
-const Label = styled.label`
-  display: block;
-  font-size: 17px;
-  color: #333;
-  font-weight: 600;
-  background-color: #fff;
-  line-height: 44px;
-  margin-top: 10px;
-  padding-left: 10px;
-  position: relative;
-  >input{
-    background: #fff;
-    border: none;
-    font-weight: 400;
-    margin-left: 6px;
-    color: #666;
-  }`;
 const Button = styled.div`
 display: flex;
 justify-content: space-evenly;
@@ -73,7 +56,7 @@ type Params = {
 }
 
 const Tag = () => {
-  const { tags, findTag, updateTag, deleteTag } = useTag()
+  const { findTag, updateTag, deleteTag } = useTag()
   const { id } = useParams<Params>()
   const tag = findTag(parseInt(id))
   // console.log(tag)

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Month } from './Month';
 import Icon from '../../component/Icon';
-import { useRecords } from 'hook/useRecound';
+import { useRecords,RecordsItem } from 'hook/useRecound';
 import useTag from 'hook/useTag';
 import day from "dayjs"
 import Category from './Category';
+import dayjs from 'dayjs';
 const Preparation = styled.div`
 display: flex;
 justify-content: space-between;
@@ -20,6 +21,7 @@ margin:17px 10px;
 }
 `;
 const Bill = styled.ul`
+  background: #fff;
 >li{
   display: flex;
   justify-content: space-between;
@@ -64,7 +66,7 @@ const Bill = styled.ul`
 type categoryType = "+" | "-" | "o";
 const Monthly = () => { 
   const { getIconName, getTagName} = useTag()
-  const { records } = useRecords()
+  const { records} = useRecords()
   const [category,setCategory] =useState<categoryType>("-")
   const onChange = (category: categoryType) => { 
     setCategory(category)
@@ -76,19 +78,36 @@ const Monthly = () => {
       return r
     }
   })
-
+  const hash:{[K: string]:RecordsItem[]} = {}
+  selectCategory.forEach((r) => { 
+    const key = day(r.createdAt).format("YYYY年MM月DD日")
+    if (!(key in hash)) { 
+       hash[key]=[]
+    }
+    hash[key].push(r)
+  }
+  )
+  const array = Object.entries(hash).sort((a,b)=>{
+  if (a[0] === b[0]) return 0;
+  if (a[0] > b[0]) return -1;
+  if (a[0] < b[0]) return 1;
+    return 0;
+  })
+  const date = new Date()
+  console.log(dayjs(date).format("MM月DD日"));
+    console.log(date.getDate());
   return <div >
     <Month />
     <Preparation>
       {/* <div>{records.map((r) => { 
         return day(r.createdAt).format("YYYY年MM月DD日")
       })}<span>周四</span></div> */}
-        
+      <div className='date'>{ day(date).format("MM月DD日") }</div>
       <Category value={category} onChange={(category: "+" | "-" | "o") => onChange(category) } />
     </Preparation>
     <Bill>
       {selectCategory.map((r) => {
-        return <li>
+        return <li >
           <div className='listName'>
             <span className='iconBg'>
               <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
@@ -107,5 +126,7 @@ const Monthly = () => {
   </div >
 }
 export {Monthly }
+
+
 
 

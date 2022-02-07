@@ -4,12 +4,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Monthly } from './AccountBook/Monthly';
-const Wrapper = styled.div`
+const AccountWrapper = styled.div`
 height: 100vh;
 display: flex;
 flex-direction: column;
 background: #fff;
-
 `;
 const TopWrapper = styled.div`
 display: flex;
@@ -34,27 +33,23 @@ const Button = styled.button`
 border: none;
 background: none;
 `;
-
 const AccountBook = () => {
   let history = useHistory();
   function handleClick() {
     history.goBack();
   }
-
   return (
- <Wrapper>
+ <AccountWrapper>
     <TopWrapper> 
       <Button><Icon name="ArrowLeft" onClick={handleClick} /></Button>
       <p>账本</p>
         <Icon name="" />
       </TopWrapper>
       <Main>
-   
-    <Monthly  />
-
+         <Monthly  />
       </Main>
       <Nav />
-  </Wrapper>
+  </AccountWrapper>
   )
 }
   export default AccountBook;
