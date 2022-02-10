@@ -1,9 +1,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import day from "dayjs"
+
 const Wrapper = styled.div`
 background-color:#FF9400;
-width: 100%;
 border-radius:0px  0px 40%  40% ;
 `;
 const MonthWrapper = styled.div`
@@ -44,10 +45,21 @@ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.1);
 }
 
 `;
+const MonthInput = styled.input`
+ background: #f4f4f4;
+ border: none;
+ input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
+ `
 const Month = () => { 
+  const nowDate = () => {
+    let date = day(new Date()).format("YYYY-MM")
+    return date
+  }
   return <Wrapper>
       <MonthWrapper>
-       <p className=''>2022年07月</p>
+       <p >
+      <MonthInput type="month" label='' value={nowDate()} />
+      </p>  
        <ol>
          <li><span>本月支出</span>2380280.00</li>
          <li><span>本月收入</span>2380280.00</li>
@@ -55,4 +67,4 @@ const Month = () => {
        </MonthWrapper>
   </Wrapper>
 }
-export { Month}
+export {Month}

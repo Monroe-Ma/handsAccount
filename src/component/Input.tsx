@@ -23,9 +23,7 @@ const Input: React.FC<Props> = (props) => {
   const { label,children,...rest} =props
   return <Label >
     {props.label}
-    <input {...rest}
-      
-        />
+    <input {...rest} />
       </Label>
 
 }

@@ -8,10 +8,10 @@ import NoMatch from './view/NoMatch';
 import Tag  from "view/Tag"
 import styled from 'styled-components';
 import {
- HashRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-   Redirect
+  Redirect
 } from "react-router-dom";
 
 const Wrapper = styled.div`
@@ -46,7 +46,8 @@ function App() {
          <NoMatch/>
          </Route> 
       </Switch>
-   </Router>
+        </Router>
+          {/* <Button color='primary'>Primary</Button> */}
 </Wrapper>
   );
 }

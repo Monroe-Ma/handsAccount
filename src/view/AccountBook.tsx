@@ -3,6 +3,7 @@ import Nav from 'component/Nav';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { Month } from './AccountBook/Month';
 import { Monthly } from './AccountBook/Monthly';
 const AccountWrapper = styled.div`
 height: 100vh;
@@ -24,7 +25,7 @@ padding: 11px 15px;
    fill: #fff;
  }
 `;
-const Main = styled.main`
+const AccountMain = styled.main`
 flex-grow: 1;
 display: flex;
 flex-direction: column;
@@ -45,9 +46,10 @@ const AccountBook = () => {
       <p>账本</p>
         <Icon name="" />
       </TopWrapper>
-      <Main>
+      <AccountMain>
+         <Month />
          <Monthly  />
-      </Main>
+      </AccountMain>
       <Nav />
   </AccountWrapper>
   )

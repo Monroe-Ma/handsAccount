@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Month } from './Month';
 import Icon from '../../component/Icon';
 import { useRecords,RecordsItem } from 'hook/useRecound';
 import useTag from 'hook/useTag';
 import day from "dayjs"
 import Category from './Category';
-import dayjs from 'dayjs';
+
 const Preparation = styled.div`
 display: flex;
 justify-content: space-between;
@@ -26,13 +25,13 @@ const Bill = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin:10px 10px 0px 10px;
   border-bottom:1px solid #eee;
+  margin: 0 10px;
   padding: 8px 0;
   .listName{
     display: flex;
     align-items: center;
-    
+
     >.iconBg{
       background: #FFF2E9;
       width: 26px;
@@ -80,7 +79,7 @@ const Monthly = () => {
   })
   const hash:{[K: string]:RecordsItem[]} = {}
   selectCategory.forEach((r) => { 
-    const key = day(r.createdAt).format("YYYY年MM月DD日")
+    const key = day(r.createdAt).format("MM月DD日")
     if (!(key in hash)) { 
        hash[key]=[]
     }
@@ -94,29 +93,24 @@ const Monthly = () => {
     return 0;
   })
 
-  const Header = styled.h3`
-   padding: 10px;
+  const DateHeader = styled.h4`
+   padding:10px;
+   background-color: #f4f4f4;
   `;
-
-  const date = new Date()
-  console.log(dayjs(date).format("MM月DD日"));
-    console.log(date.getDate());
   return <div >
-    <Month />
+   
     <Preparation>
-      <div className='date'>{ day(date).format("MM月DD日") }</div>
       <Category value={category} onChange={(category: "+" | "-" | "o") => onChange(category) } />
     </Preparation>
 
     {array.map(([time, records], i) => 
-           
         <div key={i}>
-          <Header>
+          <DateHeader>
             {time}
-          </Header>
+        </DateHeader>
+        <Bill>
           {records.map((r) => {
-            return <Bill>
-              <li >
+            return <li  key={r.createdAt}>
               <div className='listName'>
                 <span className='iconBg'>
                    <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
@@ -129,8 +123,9 @@ const Monthly = () => {
                { r.outputVal }
               </div>
             </li>
-            </Bill>
-      })}
+           
+          })}
+           </Bill>
         </div>
       
       ) }
