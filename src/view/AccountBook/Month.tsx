@@ -1,7 +1,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import day from "dayjs"
+import day from "dayjs";
+import { useRecords,RecordsItem } from 'hook/useRecound';
 
 const Wrapper = styled.div`
 background-color:#FF9400;
@@ -55,10 +56,15 @@ const Month = () => {
     let date = day(new Date()).format("YYYY-MM")
     return date
   }
+
+const datepickerOnChange = (date:string) => {
+  console.log(date)
+  }
+
   return <Wrapper>
       <MonthWrapper>
        <p >
-      <MonthInput type="month" label='' value={nowDate()} />
+        <MonthInput type="month" label='' defaultValue={nowDate()} onchange={datepickerOnChange}  />
       </p>  
        <ol>
          <li><span>本月支出</span>2380280.00</li>

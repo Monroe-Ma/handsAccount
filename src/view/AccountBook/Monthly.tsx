@@ -77,6 +77,9 @@ const Monthly = () => {
       return r
     }
   })
+  console.log(records);
+  
+
   const hash:{[K: string]:RecordsItem[]} = {}
   selectCategory.forEach((r) => { 
     const key = day(r.createdAt).format("MM月DD日")
@@ -91,6 +94,10 @@ const Monthly = () => {
   if (a[0] > b[0]) return -1;
   if (a[0] < b[0]) return 1;
     return 0;
+  })
+
+  selectCategory.forEach(() => { 
+    // if () { }
   })
 
   const DateHeader = styled.h4`
