@@ -9,7 +9,6 @@ const Wrapper = styled.div`
  margin: 10px;
 `;
 const AnalysisEcharts: React.FC<Prop> = (props) => {
-  
   const {option } =props
   const container = useRef<HTMLDivElement>(null);
   const chart = useRef<echarts.EChartsType | null>(null);
@@ -21,16 +20,13 @@ const AnalysisEcharts: React.FC<Prop> = (props) => {
       container.current.style.height = `${(width - 20) * 1.2}px`
       chart.current = echarts.init(container.current, "dart")
     }
-    
-  
   }, []);
 
   useEffect(() => { 
     if (chart && chart.current) { 
       chart.current.setOption(option)
       }
-  }, [option])
-  
+  }, [option]) 
   return (
     <Wrapper>
     <div

@@ -15,7 +15,7 @@ display: block;
 
 `;
 type Props = {
-  label:string
+  label: string
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 const Input: React.FC<Props> = (props) => {

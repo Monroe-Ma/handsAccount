@@ -3,8 +3,7 @@ import Layout from 'component/Layout';
 import AnalysisEcharts from './AnalysisEcharts';
 
 const Analysis = () => { 
-  const [option, setOption] = useState({
-
+  const [option] = useState({
       title: {
     text: '本月收支数据',
     left: 'left'
