@@ -6,9 +6,8 @@ type Prop = {
 const AnalysisEcharts: React.FC<Prop> = (props) => {
   
   const {option } =props
-  const container =useRef <HTMLDivElement>(null);let chart = useRef(null);
-  // let chart;
-  const width = document.documentElement.clientWidth;
+  const container = useRef<HTMLDivElement>(null);
+  const chart = useRef<echarts.EChartsType | null>(null);
 
   useEffect(() => {
     const width = document.documentElement.clientWidth;
@@ -22,7 +21,7 @@ const AnalysisEcharts: React.FC<Prop> = (props) => {
   }, []);
 
   useEffect(() => { 
-    if (container && container.current) { 
+    if (chart && chart.current) { 
       chart.current.setOption(option)
       }
   }, [option])
@@ -34,7 +33,3 @@ const AnalysisEcharts: React.FC<Prop> = (props) => {
   )
 }
 export default AnalysisEcharts;
-
-function useref(arg0: null) {
-  throw new Error('Function not implemented.');
-}

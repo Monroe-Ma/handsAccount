@@ -41,8 +41,6 @@ const Analysis = () => {
   })
   return (
     <Layout title="统计分析">
-    
-      <div >我来在react里面使用Echarts</div>
       <AnalysisEcharts option={option }/>
     </Layout>
   )
