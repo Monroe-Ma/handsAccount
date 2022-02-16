@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
-import { useRecords,RecordsItem } from 'hook/useRecound';
+
 
 const Wrapper = styled.div`
 background-color:#FF9400;
