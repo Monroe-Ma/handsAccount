@@ -77,9 +77,7 @@ const Monthly = () => {
       return r
     }
   })
-  console.log(records);
-  
-
+  // console.log(records);
   const hash:{[K: string]:RecordsItem[]} = {}
   selectCategory.forEach((r) => { 
     const key = day(r.createdAt).format("MM月DD日")

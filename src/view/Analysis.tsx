@@ -4,13 +4,20 @@ import AnalysisEcharts from './AnalysisEcharts';
 
 const Analysis = () => { 
   const [option, setOption] = useState({
+
       title: {
     text: '本月收支数据',
     left: 'left'
   },
   tooltip: {
     trigger: 'item'
-  },
+    },
+  grid: {
+    left: 12,
+    top: 0,
+    right: 0,
+    bottom: 0
+},
   legend: {
     orient: 'vertical',
     right: 'right',
@@ -18,6 +25,7 @@ const Analysis = () => {
   },
   series: [
     {
+        
       name: 'Access From',
       type: 'pie',
       radius: '50%',

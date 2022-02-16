@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
+import  styled  from 'styled-components';
 type Prop = {
   option :object
 }
+const Wrapper = styled.div`
+ background-color: #fff;
+ margin: 10px;
+`;
 const AnalysisEcharts: React.FC<Prop> = (props) => {
   
   const {option } =props
@@ -27,9 +32,11 @@ const AnalysisEcharts: React.FC<Prop> = (props) => {
   }, [option])
   
   return (
+    <Wrapper>
     <div
       ref={container}
-    />
+      />
+      </Wrapper>
   )
 }
 export default AnalysisEcharts;
