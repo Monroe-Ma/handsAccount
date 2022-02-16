@@ -42,6 +42,7 @@ const Write: React.FC = () => {
       alert("保存成功");
       setSelected(defaultData);
       setOutputVal(0)
+      setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
     }
   }
   return (

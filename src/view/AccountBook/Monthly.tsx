@@ -49,12 +49,16 @@ const Bill = styled.ul`
       display: flex;
       flex-direction: column;
       margin-left: 7px;
+      .showRow{
+        display: flex;
+        flex-direction: row;
         >span{
           font-size: 12px;
           color: #999;
           display: inline-block;
           line-height: 22px;
          }
+       }
 }
 }
 .account{
@@ -66,7 +70,7 @@ type categoryType = "+" | "-" | "o";
 const Monthly = () => { 
   const { getIconName, getTagName} = useTag()
   const { records} = useRecords()
-  const [category,setCategory] =useState<categoryType>("-")
+  const [category,setCategory] =useState<categoryType>("o")
   const onChange = (category: categoryType) => { 
     setCategory(category)
   }
@@ -121,11 +125,14 @@ const Monthly = () => {
                    <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
                 </span>
                 <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
-                   <span>{day(r.createdAt).format("HH:mm:ss")}</span>
+               <div className='showRow'>
+                    <span>{day(r.createdAt).format("HH:mm:ss")} </span>
+                    <span> | {r.note}</span>
+               </div>
                 </p>
                 </div>
                 <div className='account'>
-               { r.outputVal }
+                { r.classification} { r.outputVal }
               </div>
             </li>
            
