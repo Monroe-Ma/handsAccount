@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
+import { Input } from 'component/Input';
 
 
 const Wrapper = styled.div`
@@ -46,25 +47,28 @@ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.1);
 }
 
 `;
-const MonthInput = styled.input`
+const MonthInput = styled(Input)`
  background: #f4f4f4;
  border: none;
  input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
  `
 const Month = () => { 
-  const nowDate = () => {
-    let date = day(new Date()).format("YYYY-MM")
-    return date
-  }
+  const [createdAt,setCreatedAt] = useState(day(new Date()).format("YYYY-MM"))
+//   const nowDate = () => {
+//     let date = day(new Date()).format("YYYY-MM")
+//     return date
+//   }
 
-const datepickerOnChange = (date:string) => {
-  console.log(date)
-  }
+// const datepickerOnChange = (date:string) => {
+//   console.log(date)
+//   }
 
   return <Wrapper>
       <MonthWrapper>
        <p >
-        <MonthInput type="month" label='' defaultValue={nowDate()} onchange={datepickerOnChange}  />
+        <MonthInput type="daytime-local" label=''
+          defaultValue={day(new Date()).format("YYYY-MM")}
+          onChange={(e:React.ChangeEvent<HTMLInputElement>) => setCreatedAt(e.target.value)} />
       </p>  
        <ol>
          <li><span>本月支出</span>2380280.00</li>

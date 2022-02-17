@@ -33,7 +33,7 @@ const useRecords = () => {
       return true
 
    }
-  return {addRecounds,records,}
+  return {addRecounts: addRecounds,records,}
  }
 
 export { useRecords}

@@ -1,7 +1,7 @@
 import useTag  from 'hook/useTag';
 import React from 'react';
 import styled from 'styled-components';
-import Icon from './../../component/Icon';
+import Icon from '../../component/Icon';
 
 const Wrapper = styled.section`
 flex-grow: 1;

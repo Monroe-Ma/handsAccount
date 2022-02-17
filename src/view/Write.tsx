@@ -3,10 +3,10 @@ import Layout from 'component/Layout';
 import styled from 'styled-components';
 import ClassiFication from "./Write/ClassiFication"
 import Output from "./Write/Output"
-import TagsSeaction from "./Write/TagsSeaction"
-import NoteSeaction from "./Write/NoteSeaction"
-import NumberSecation from './Write/NumberSecation';
-import { useRecords } from 'hook/useRecound';
+import TagsSection from "./Write/TagsSection"
+import NoteSection from "./Write/NoteSection"
+import NumberSection from './Write/NumberSection';
+import { useRecords } from 'hook/useRecords';
 import { Input } from 'component/Input';
 import day from 'dayjs';
 const MyLayout = styled(Layout)`
@@ -35,10 +35,10 @@ const Write: React.FC = () => {
       ...obj
     })
   }
-  const { addRecounds }=useRecords()
+  const { addRecounts: addRecounts }=useRecords()
   const submit = () => { 
     // console.log(selected, outputVal)
-    if (addRecounds({ ...selected, outputVal: Number(outputVal),createdAt })) { 
+    if (addRecounts({ ...selected, outputVal: Number(outputVal),createdAt })) { 
       alert("保存成功");
       setSelected(defaultData);
       setOutputVal(0)
@@ -56,20 +56,20 @@ const Write: React.FC = () => {
         value={outputVal}
         onChange={setOutputVal}
       />
-      <TagsSeaction
+      <TagsSection
         value={selected.tagIds}
         onChange={(tagIds) => onChange({tagIds})}
       >
-      </TagsSeaction >
+      </TagsSection >
       <InputWrapper >
       <Input label='' type='date' defaultValue={defaultData.createdAt}
           onChange={(e) => setCreatedAt(e.target.value)} />  
       </InputWrapper>
-      <NoteSeaction
+      <NoteSection
         value={selected.note}
         onChange={(note) => onChange({note})}
       />
-      <NumberSecation
+      <NumberSection
         value={outputVal}
         onChange={setOutputVal}
         onOk={submit}
