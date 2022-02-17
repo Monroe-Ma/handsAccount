@@ -7,6 +7,7 @@ type Prop = {
 const Wrapper = styled.div`
  background-color: #fff;
  margin: 10px;
+ padding:10px;
 `;
 const ExpendEcharts: React.FC<Prop> = (props) => {
   const {option } =props
