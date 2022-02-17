@@ -10,7 +10,7 @@ const Preparation = styled.div`
 /* display: flex;
 justify-content: center;
 align-items: center; */
-margin:17px 36px;
+margin:17px 10px;
 >div{
   font-size: 18px;
   >span{
