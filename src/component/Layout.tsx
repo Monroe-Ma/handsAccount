@@ -13,6 +13,8 @@ const Main = styled.main`
 flex-grow: 1;
 display: flex;
 flex-direction: column;
+overflow-y: scroll;
+-webkit-overflow-scrolling: touch;
 `;
 const Layout = (props: any) => {
   return <Wrapper>
