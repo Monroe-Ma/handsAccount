@@ -6,7 +6,7 @@ import Output from "./Write/Output"
 import TagsSeaction from "./Write/TagsSeaction"
 import NoteSeaction from "./Write/NoteSeaction"
 import NumberSecation from './Write/NumberSecation';
-import { useRecords } from 'hook/useRecound';
+import { useRecords } from 'hook/useRecords';
 import { Input } from 'component/Input';
 import day from 'dayjs';
 const MyLayout = styled(Layout)`
@@ -35,16 +35,15 @@ const Write: React.FC = () => {
       ...obj
     })
   }
-  const { addRecounds }=useRecords()
-  const submit = () => { 
-    // console.log(selected, outputVal)
-    if (addRecounds({ ...selected, outputVal: Number(outputVal),createdAt })) { 
+  const { addRecords } = useRecords();
+  const submit = () => {
+    if (addRecords({ ...selected, outputVal: Number(outputVal), createdAt })) {
       alert("保存成功");
       setSelected(defaultData);
-      setOutputVal(0)
-      setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
+      setOutputVal(0);
+      setCreatedAt(day(new Date()).format("YYYY-MM-DD"));
     }
-  }
+  };
   return (
     <MyLayout title="记一笔">
       <ClassiFication

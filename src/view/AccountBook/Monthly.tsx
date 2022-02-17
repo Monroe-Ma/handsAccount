@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Icon from '../../component/Icon';
-import { useRecords,RecordsItem } from 'hook/useRecound';
+import { useRecords,RecordsItem } from 'hook/useRecords';
 import useTag from 'hook/useTag';
 import day from "dayjs"
 import Category from './Category';
