@@ -7,10 +7,11 @@ type Props = {
 const Wrapper = styled.ol`
 display: flex;
     background: #EEEEEE;
-    color: #999;
+    color: #999;  
     border-radius: 4px;
+    justify-content: center;
     >li{
-      padding: 8px 11px;
+      padding: 9px 41px;
       &.selected{
         background:#FFB101;
         color: #fff;

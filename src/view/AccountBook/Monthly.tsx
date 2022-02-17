@@ -7,10 +7,10 @@ import day from "dayjs"
 import Category from './Category';
 
 const Preparation = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin:17px 10px;
+/* display: flex;
+justify-content: center;
+align-items: center; */
+margin:17px 36px;
 >div{
   font-size: 18px;
   >span{
