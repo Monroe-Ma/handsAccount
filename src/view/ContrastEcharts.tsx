@@ -8,7 +8,7 @@ const Wrapper = styled.div`
  background-color: #fff;
  margin: 10px;
 `;
-const AnalysisEcharts: React.FC<Prop> = (props) => {
+const ExpendEcharts: React.FC<Prop> = (props) => {
   const {option } =props
   const container = useRef<HTMLDivElement>(null);
   const chart = useRef<echarts.EChartsType | null>(null);
@@ -35,4 +35,5 @@ const AnalysisEcharts: React.FC<Prop> = (props) => {
       </Wrapper>
   )
 }
-export default AnalysisEcharts;
+export default ExpendEcharts
+

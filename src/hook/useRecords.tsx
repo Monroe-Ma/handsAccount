@@ -18,7 +18,7 @@ const useRecords = () => {
   useUpdate(()=>{
     window.localStorage.setItem("records",JSON.stringify(records))},[records]
   )
-  const addRecounds = (record: RecordsItem) => {
+  const  addRecounts = (record: RecordsItem) => {
     // console.log(newrecord)
     if (record.outputVal <= 0) {
         alert("请输入金额")
@@ -33,7 +33,7 @@ const useRecords = () => {
       return true
 
    }
-  return {addRecounts: addRecounds,records,}
+  return { addRecounts:  addRecounts,records,}
  }
 
 export { useRecords}
