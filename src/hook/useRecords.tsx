@@ -1,6 +1,8 @@
 import  { useState } from 'react';
 import { useEffect } from 'react';
 import useUpdate from './useUpdate';
+import { Alert } from 'pile-ui';
+import '@pile-ui/theme-default/lib/alert.min.css'
 export type RecordsItem = {
   tagIds: number[];
   note: string;
@@ -21,11 +23,25 @@ const useRecords = () => {
   const  addRecounts = (record: RecordsItem) => {
     // console.log(newrecord)
     if (record.outputVal <= 0) {
-        alert("请输入金额")
+        Alert.show({
+      title: '请输入金额',
+      btnText:'确定',
+      type:'warnning',
+      callBack: function() {
+        console.log('关闭了...');
+      }
+    });
         return false
       }
       if (record.tagIds.length=== 0) {
-        alert("请选择标签")
+      Alert.show({
+      title: '请选择标签',
+      btnText:'确定',
+      type:'warnning',
+      callBack: function() {
+      console.log('关闭了...');
+      }
+    });
         return false
       }
       // const record = {...newrecord,createdAt:(new Date()).toISOString()}
@@ -33,7 +49,9 @@ const useRecords = () => {
       return true
 
    }
-  return { addRecounts: addRecounts,records,}
+  return { addRecounts: addRecounts, records, }
+  
+  
  }
 
 export { useRecords}

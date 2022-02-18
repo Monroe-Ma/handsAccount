@@ -62,7 +62,7 @@ const Month = () => {
   return <Wrapper>
       <MonthWrapper>
       <InputWrapper>
-         <Button>hello Pile</Button>
+
       <Input label='' type='month' defaultValue={currentTime}
           onChange={(e) => setCreatedAt(e.target.value)} />
       </InputWrapper>

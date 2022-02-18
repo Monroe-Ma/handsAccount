@@ -37,21 +37,21 @@ const Write: React.FC = () => {
       ...obj
     })
   }
-  const aaa = () => {   Alert.show({
-      title: '这是一个测试弹框',
-      // content: '内容内容123',
-      btnText:'你好了',
-      showIcon:true,
-      type:'warnning',// success, warnning
-      callBack: function() {
-        console.log('关闭了...');
-      }
-    });}
+
   const{ addRecounts }=useRecords()
   const submit = () => { 
     // console.log(selected, outputVal)
     if (addRecounts({ ...selected, outputVal: Number(outputVal), createdAt })) { 
-     aaa()
+    Alert.show({
+      title: '保存成功',
+      
+      btnText:'确定',
+     
+      type:'success',
+      callBack: function() {
+        console.log('关闭了...');
+      }
+    })
       // alert("保存成功");
       setSelected(defaultData);
       setOutputVal(0)
