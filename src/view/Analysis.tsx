@@ -6,7 +6,6 @@ import useTag from "hook/useTag";
 import day from "dayjs"
 import IncomeEcharts from "./IncomeEcharts";
 import ContrastEcharts from "./ContrastEcharts";
-import _ from "lodash";
 
 const Analysis = () => {
   const { records } = useRecords()
@@ -73,7 +72,7 @@ const Analysis = () => {
     // console.log("yearMonthStr");
     // console.log(yearMonthStr);
     //找到所有数据里是当年年月的数据
-    const needRecords = records.filter(item => item.createdAt.indexOf(yearMonthStr) != -1);
+    const needRecords = records.filter(item => item.createdAt.indexOf(yearMonthStr) !== -1);
     // console.log("---needRecords:",needRecords)
     //找到当前年月里支出的数据和总钱数
     const expendRecords = needRecords.filter(item => item.classification === '-');

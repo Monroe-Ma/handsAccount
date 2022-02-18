@@ -35,7 +35,7 @@ const Write: React.FC = () => {
       ...obj
     })
   }
-  const { addRecounts: addRecounts }=useRecords()
+  const{ addRecounts }=useRecords()
   const submit = () => { 
     // console.log(selected, outputVal)
     if (addRecounts({ ...selected, outputVal: Number(outputVal),createdAt })) { 

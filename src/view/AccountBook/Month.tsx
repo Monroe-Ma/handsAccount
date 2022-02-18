@@ -56,6 +56,7 @@ const InputWrapper = styled.div`
 const Month = () => { 
   const currentTime =day(new Date()).format("YYYY-MM")
   const [createdAt, setCreatedAt] = useState(currentTime)
+  console.log(createdAt);
   
   return <Wrapper>
       <MonthWrapper>
