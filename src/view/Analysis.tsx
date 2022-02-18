@@ -91,7 +91,11 @@ const Analysis = () => {
       '收入': incomeAllMoney
     });
   }
-
+//  const ccc = needObjArr.sort((a, b) => {
+//       if (a.month === b.month) return 0;
+//   if (a.month  >  b.month) return -1;
+//   if (a.month  < b.month) return 1;
+//    })
   const expendOption = {
     title: {
       text: '本月支出占比分析',
@@ -111,12 +115,21 @@ const Analysis = () => {
         type: 'pie',
         radius: '50%',
         data: seriesDataArr,
-        emphasis: {
-          itemStyle: {
+         itemStyle: {
             shadowBlur: 10,
             shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            emphasis: {   },
+            normal:{
+             color:function(params:any) {
+             //自定义颜色
+             var colorList = [          
+             '#C31615',"#FC8452","#3BA272","#FAC957" ,"#fa8c16", "#7cb305",  '#1890ff', '#5470c6','#fc8452',  '#fac858', '#c41d7f', '#73c0de',   '#ea7ccc'
+             ];
+                return colorList[params.dataIndex]
+               }
           }
+         
         }
       }
     ]
@@ -139,39 +152,91 @@ const Analysis = () => {
         name: '收入占比',
         type: 'pie',
         radius: '50%',
-         data: incomeSeriesData,
-        emphasis: {
+        data: incomeSeriesData,
           itemStyle: {
+            color:'#73c0de',
             shadowBlur: 10,
             shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            emphasis: {},
+            normal:{
+             color:function(params:any) {
+             //自定义颜色
+             var colorList = [          
+             "#3BA272","#FAC957" ,"#fa8c16", "#7cb305", '#9a60b4',"#13c2c2", '#1890ff', '#5470c6','#fc8452',  '#fac858', '#c41d7f', '#73c0de',   '#ea7ccc'
+             ];
+                return colorList[params.dataIndex]
+               }
           }
-        }
+          },
+          
       }
     ]
   };
 
- const  contrastOption = {
-   legend: {},
+  const contrastOption = {
+    title: {
+      text: '月度收入支出对比',
+      left: 'center'
+    },
+    legend: {
+      orient: 'horizontal',
+      left: 'center',
+      bottom: 'bottom'
+   },
   tooltip: {},
   dataset: {
     dimensions: ['month', '支出', '收入', ],
     source:  needObjArr,
   },
-  xAxis: { type: 'category' },
-  yAxis: {},
-  // Declare several bar series, each will be mapped
-  // to a column of dataset.source by default.
-  series: [ { type: 'bar' }, { type: 'bar' }]
+    xAxis: {
+      type: 'category',
+      //  axisLabel: {  
+      //      interval:0,  
+      //      rotate:40  
+      //  },
+    },
+    dataZoom: [
+    {
+        id: 'dataZoomX',
+        type: 'inside',
+        xAxisIndex: [0],
+        filterMode: 'filter',
+        start: 80,
+    },
+  
+],
+  yAxis: { type: 'value'},
+    series: [
+      { type: 'bar',
+     
+      },
+      
+      {
+        type: 'bar',
+        //   itemStyle: {
+        //   color: function (params: any) {//柱状体颜色
+        //     // build a color map as your need.
+        //     var colorList = [
+        //       '#AE54B5'
+        //     ];
+        //     return colorList[params.dataIndex]
+        //   }
+        // }
+      },
+    
+    
+    ]
 };
 
 
 
   return (
     <Layout title="统计分析">
+      <ContrastEcharts option={contrastOption} />
       <ExpendEcharts option={expendOption} />
       <IncomeEcharts option={incomeOption} />
-       <ContrastEcharts option={contrastOption} />
+       
     </Layout>
   );
 

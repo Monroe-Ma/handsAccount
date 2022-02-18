@@ -47,11 +47,11 @@ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.1);
 }
 
 `;
-const MonthInput = styled(Input)`
- background: #f4f4f4;
- border: none;
- input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
- `
+// const MonthInput = styled(Input)`
+//  background: #f4f4f4;
+//  border: none;
+//  input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
+//  `
 const Month = () => { 
   const [createdAt, setCreatedAt] = useState(day(new Date()).format("YYYY-MM"))
   
