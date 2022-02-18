@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
 import { Input } from 'component/Input';
+import { Button } from 'pile-ui'
 
 
 const Wrapper = styled.div`
@@ -60,7 +61,8 @@ const Month = () => {
   
   return <Wrapper>
       <MonthWrapper>
-       <InputWrapper>
+      <InputWrapper>
+         <Button>hello Pile</Button>
       <Input label='' type='month' defaultValue={currentTime}
           onChange={(e) => setCreatedAt(e.target.value)} />
       </InputWrapper>

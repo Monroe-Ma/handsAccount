@@ -9,6 +9,8 @@ import NumberSection from './Write/NumberSection';
 import { useRecords } from 'hook/useRecords';
 import { Input } from 'component/Input';
 import day from 'dayjs';
+import { Alert } from 'pile-ui'
+
 const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
@@ -35,11 +37,22 @@ const Write: React.FC = () => {
       ...obj
     })
   }
+  const aaa = () => {   Alert.show({
+      title: '这是一个测试弹框',
+      // content: '内容内容123',
+      btnText:'你好了',
+      showIcon:true,
+      type:'warnning',// success, warnning
+      callBack: function() {
+        console.log('关闭了...');
+      }
+    });}
   const{ addRecounts }=useRecords()
   const submit = () => { 
     // console.log(selected, outputVal)
-    if (addRecounts({ ...selected, outputVal: Number(outputVal),createdAt })) { 
-      alert("保存成功");
+    if (addRecounts({ ...selected, outputVal: Number(outputVal), createdAt })) { 
+     aaa()
+      // alert("保存成功");
       setSelected(defaultData);
       setOutputVal(0)
       setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
