@@ -47,20 +47,22 @@ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.1);
 }
 
 `;
-// const MonthInput = styled(Input)`
-//  background: #f4f4f4;
-//  border: none;
-//  input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
-//  `
+const InputWrapper = styled.div`
+ background: #f4f4f4;
+ border: none;
+ border-radius: 8px;
+ margin: 0 30px;
+ `;
 const Month = () => { 
-  const [createdAt, setCreatedAt] = useState(day(new Date()).format("YYYY-MM"))
+  const currentTime =day(new Date()).format("YYYY-MM")
+  const [createdAt, setCreatedAt] = useState(currentTime)
   
   return <Wrapper>
       <MonthWrapper>
-       <p >
-        <Input label='' type='date' defaultValue={day(new Date()).format("YYYY-MM")}
+       <InputWrapper>
+      <Input label='' type='month' defaultValue={currentTime}
           onChange={(e) => setCreatedAt(e.target.value)} />
-      </p>  
+      </InputWrapper>
        <ol>
          <li><span>本月支出</span>2380280.00</li>
          <li><span>本月收入</span>2380280.00</li>
