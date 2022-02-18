@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
-import { Input } from 'component/Input';
-import {Button} from 'antd-mobile-v2'
+import { DatePicker } from 'antd-mobile-v2';
+import Icon from 'component/Icon';
 
 const Wrapper = styled.div`
 background-color:#FF9400;
@@ -47,24 +47,42 @@ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.1);
 }
 
 `;
-const InputWrapper = styled.div`
- background: #f4f4f4;
- border: none;
- border-radius: 8px;
- margin: 0 30px;
- `;
+const HaButton = styled.button`
+border: none;
+padding:  10px 30px;
+background-color: #f6f6f6;
+border-radius: 8px;
+color: #333;
+font-size: 16px;
+.icon{
+  margin-left:8px;
+  width: 10px;
+  height: 10px;
+  fill:#ddd
+}
+`;
 const Month = () => { 
+  
   const currentTime =day(new Date()).format("YYYY-MM")
-  const [createdAt, setCreatedAt] = useState(currentTime)
-  console.log(createdAt);
+  const [monthPicker, setMonthPicker] = useState<Date>()
+  console.log(monthPicker);
   
   return <Wrapper>
-      <MonthWrapper>
-      <InputWrapper>
-<Button>111</Button>
-      <Input label='' type='month' defaultValue={currentTime}
-          onChange={(e) => setCreatedAt(e.target.value)} />
-      </InputWrapper>
+    <MonthWrapper>
+
+    <DatePicker
+          mode="month"
+          extra="Optional"
+          onChange={date => setMonthPicker(date )}
+        >
+          <HaButton>{currentTime } <Icon name="xiajiantou" /> </HaButton>
+    </DatePicker>
+
+         
+
+      {/* <Input label='' type='month' defaultValue={currentTime}
+          onChange={(e) => setCreatedAt(e.target.value)} /> */}
+    
        <ol>
          <li><span>本月支出</span>2380280.00</li>
          <li><span>本月收入</span>2380280.00</li>

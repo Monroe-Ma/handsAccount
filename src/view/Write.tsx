@@ -10,6 +10,9 @@ import { useRecords } from 'hook/useRecords';
 import { Input } from 'component/Input';
 import day from 'dayjs';
 import { Alert } from 'pile-ui'
+import { DatePicker } from 'antd-mobile-v2';
+import Icon from 'component/Icon';
+
 
 const MyLayout = styled(Layout)`
 display: flex;
@@ -19,6 +22,12 @@ const InputWrapper = styled.div`
   background-color: #fff;
   margin-top:10px;
   padding: 10px 0;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  .icon{
+    margin-right: 20px;
+  }
 `;
 type classification = "+" | "-";
 const defaultData = {
@@ -28,6 +37,7 @@ const defaultData = {
  createdAt:  day(new Date()).format("YYYY-MM-DD") as string
 }
 const Write: React.FC = () => { 
+   const [monthPicker, setMonthPicker] = useState<Date>()
   const [selected, setSelected] = useState(defaultData)
   const [outputVal, setOutputVal] = useState<number>(0.00)
   const [createdAt,setCreatedAt] = useState(day(new Date()).format("YYYY-MM-DD"))
@@ -52,7 +62,6 @@ const Write: React.FC = () => {
         console.log('关闭了...');
       }
     })
-      // alert("保存成功");
       setSelected(defaultData);
       setOutputVal(0)
       setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
@@ -74,10 +83,17 @@ const Write: React.FC = () => {
         onChange={(tagIds) => onChange({tagIds})}
       >
       </TagsSection >
-      <InputWrapper >
-      <Input label='' type='date' defaultValue={defaultData.createdAt}
-          onChange={(e) => setCreatedAt(e.target.value)} />  
+          <DatePicker
+          mode="date"
+          extra="Optional"
+          onChange={date => setMonthPicker(date )}
+        >
+         <InputWrapper >
+      <Input label='' type='text' defaultValue={defaultData.createdAt}
+          onChange={(e) => setCreatedAt(e.target.value)} />  <Icon name="ArrowRight" />
       </InputWrapper>
+    </DatePicker>
+     
       <NoteSection
         value={selected.note}
         onChange={(note) => onChange({note})}

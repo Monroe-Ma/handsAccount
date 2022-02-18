@@ -350,6 +350,7 @@ module.exports = function (webpackEnv) {
           oneOf: [
              {
               test: /\.svg$/,
+              include: /\.svg$/,
               use: [
                 {loader: 'svg-sprite-loader', options: {}},
                 {
@@ -361,6 +362,20 @@ module.exports = function (webpackEnv) {
                 }
               ]
             },
+
+            //        {
+            //   test: /\.svg$/,
+            //   use: [
+            //     {loader: 'svg-sprite-loader', options: {}},
+            //     {
+            //       loader: 'svgo-loader', options: {
+            //         plugins: [
+            //           {removeAttrs: {attrs: 'fill'}}
+            //         ]
+            //       }
+            //     }
+            //   ]
+            // },
             // "url" loader works like "file" loader except that it embeds assets
             // smaller than specified limit in bytes as data URLs to avoid requests.
             // A missing `test` is equivalent to a match.
