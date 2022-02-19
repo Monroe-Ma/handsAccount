@@ -35,6 +35,8 @@ const NumberSecation: React.FC<Props> = (props) => {
     setOutput( Caculate(text, output)||"" )
   } 
 
+// const demo :HTMLElement= document.getElementById("demo")
+// console.log(demo.offsetWidth);
   return (
     <Wrapper>
       <div className='pad clearfix' onClick={padWrapper} >
@@ -50,7 +52,7 @@ const NumberSecation: React.FC<Props> = (props) => {
       <button>8</button>
       <button>9</button>
       <button className='save'>保存</button>
-      <button className='zero'>0</button>
+      <button id='demo'>0</button>
       <button>.</button>
       </div>
     </Wrapper>

@@ -6,28 +6,23 @@ const Wrapper = styled.section`
      display: flex;
      justify-content: space-around;
      line-height: 20px;
-   
+     color: #999;
      >li{
        font-size: 16px;
        font-weight: 500;
        color: #999;
        position: relative;
-       padding: 17px 0;
+       padding: 10px 24px;
+         background:#EEEEEE;
+       margin-right: 20px;
+          border-radius: 40px;
        &.selected{
-       color: #333;
+       color: #fff;
+       background:#FD9300;
+      
+       
      }
      
-     }
-     & .selected::after{
-       content:"";
-       height: 4px;
-       width: 29px;
-       display: block;
-       background:#FD9300;
-       border-radius: 2px;
-       position: absolute;
-       bottom: 0;
-       left: 0;
      }
    }
 `;

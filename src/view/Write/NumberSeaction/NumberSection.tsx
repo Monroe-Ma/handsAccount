@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 const Wrapper = styled.div`
 background: #f6f6f6;
  .pad{
@@ -17,7 +18,7 @@ background: #f6f6f6;
      font-size: 18px;
      color: #333;
       }
-    .zero{
+    #zero{
       width: 49%;
     }
     .save{

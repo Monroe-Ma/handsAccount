@@ -18,15 +18,26 @@ const MyLayout = styled(Layout)`
 display: flex;
 flex-direction: column;
 `;
-const InputWrapper = styled.div`
+const Handle = styled.div`
+  display: flex;
+  justify-content: space-between;
   background-color: #fff;
   margin-top:10px;
-  padding: 10px 0;
+  justify-content: space-between;
+  background-color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+  `;
+const Button = styled.button`
+  background-color: #fff;
+  padding:10px 20px ;
   display: flex;
   align-items:center;
-  justify-content: space-between;
+  border: 1px solid #eee;
+ margin-left: 10px;
   .icon{
-    margin-right: 20px;
+  fill:#999;
+  margin-left: 10px;
   }
 `;
 type classification = "+" | "-";
@@ -63,14 +74,13 @@ const Write: React.FC = () => {
       setOutputVal(0)
       setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
     }
-  }
+  } 
+
+
+const [selectMonth, setSelectMonth] = useState<Date>(new Date())
   return (
     <MyLayout title="记一笔">
-      <ClassiFication
-        value={selected.classification}
-        onChange={(classification: "+" | "-") => onChange( {classification} )}
-      >
-      </ClassiFication >
+      
       <Output
         value={outputVal}
         onChange={setOutputVal}
@@ -80,16 +90,25 @@ const Write: React.FC = () => {
         onChange={(tagIds) => onChange({tagIds})}
       >
       </TagsSection >
-          <DatePicker
+      <Handle>
+      <DatePicker
           mode="date"
           extra="Optional"
+           onChange={date => setSelectMonth(date)}
         >
-         <InputWrapper >
-      <Input label='' type='text' defaultValue={defaultData.createdAt}
-          onChange={(e) => setCreatedAt(e.target.value)} />  <Icon name="ArrowRight" />
-      </InputWrapper>
-    </DatePicker>
+            <Button value={outputVal}
+            >{defaultData.createdAt} <Icon name='xiajiantou' /></Button>
+
+  
+     </DatePicker>
      
+      <ClassiFication
+        value={selected.classification}
+        onChange={(classification: "+" | "-") => onChange( {classification} )}
+      >
+      </ClassiFication >
+      </Handle> 
+
       <NoteSection
         value={selected.note}
         onChange={(note) => onChange({note})}
