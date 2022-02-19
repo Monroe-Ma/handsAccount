@@ -5,10 +5,9 @@ import { useRecords,RecordsItem } from 'hook/useRecords';
 import useTag from 'hook/useTag';
 import day from "dayjs"
 import Category from './Category';
-
 const Preparation = styled.div`
 margin:17px 10px;
->div{
+  >div{
   font-size: 18px;
   >span{
     font-size:12px;
@@ -92,20 +91,40 @@ const Monthly = () => {
   if (a[0] === b[0]) return 0;
   if (a[0] > b[0]) return -1;
   if (a[0] < b[0]) return 1;
-    return 0;
+  return 0;
   })
 
   const DateHeader = styled.h4`
    padding:10px;
    background-color: #f4f4f4;
   `;
+  const NoRecords = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-top: 200px;
+  color: #999;
+    .icon{
+      width: 84px;
+      height: 84px;
+      fill:#999;
+      margin-bottom: 10px;
+    }
+  `;
+
   return <div >
    
     <Preparation>
       <Category value={category} onChange={(category: "+" | "-" | "o") => onChange(category) } />
     </Preparation>
-
-    {array.map(([time, records], i) => 
+    
+    {records.length === 0 ? 
+      <NoRecords>
+            <Icon name='noRecords' />
+            <p>暂无记录</p>
+      </NoRecords> : 
+      array&&array.map(([time, records], i) => 
         <div key={i}>
           <DateHeader>
             {time}
@@ -118,24 +137,21 @@ const Monthly = () => {
                    <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
                 </span>
                 <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
-                    <i className='showRow'>
+                    <p className='showRow'>
                     <span>{day(r.createdAt).format("HH:mm:ss")} </span>
                     <span> | {r.note}</span>
-               </i>
+               </p>
                 </p>
                 </div>
                 <div className='account'>
                 { r.classification} { r.outputVal }
               </div>
             </li>
-           
           })}
            </Bill>
         </div>
-      
-      ) }
-
-    
+      ) || <div></div>
+    }
   </div >
 }
 export {Monthly }

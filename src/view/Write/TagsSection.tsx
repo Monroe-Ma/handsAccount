@@ -46,11 +46,9 @@ type Props = {
   value: number[],
   onChange: (value: number[]) => void
 }
-const TagsSeaction: React.FC<Props> = (props) => {
+const TagsSection: React.FC<Props> = (props) => {
   const {tags,addTag }=useTag()
-  // const [selectedTag] = useState<string[]>(props.value) 
   const selectedTagIds = props.value;
- 
   const onToggleTag = (tag: number) => {
     const index = selectedTagIds.indexOf(tag)
     if (index >= 0) {
@@ -78,4 +76,4 @@ const TagsSeaction: React.FC<Props> = (props) => {
     </Wrapper>
   )
 }
-export default TagsSeaction;
+export default TagsSection;

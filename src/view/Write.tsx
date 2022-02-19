@@ -37,7 +37,6 @@ const defaultData = {
  createdAt:  day(new Date()).format("YYYY-MM-DD") as string
 }
 const Write: React.FC = () => { 
-   const [monthPicker, setMonthPicker] = useState<Date>()
   const [selected, setSelected] = useState(defaultData)
   const [outputVal, setOutputVal] = useState<number>(0.00)
   const [createdAt,setCreatedAt] = useState(day(new Date()).format("YYYY-MM-DD"))
@@ -54,9 +53,7 @@ const Write: React.FC = () => {
     if (addRecounts({ ...selected, outputVal: Number(outputVal), createdAt })) { 
     Alert.show({
       title: '保存成功',
-      
       btnText:'确定',
-     
       type:'success',
       callBack: function() {
         console.log('关闭了...');
@@ -86,7 +83,6 @@ const Write: React.FC = () => {
           <DatePicker
           mode="date"
           extra="Optional"
-          onChange={date => setMonthPicker(date )}
         >
          <InputWrapper >
       <Input label='' type='text' defaultValue={defaultData.createdAt}

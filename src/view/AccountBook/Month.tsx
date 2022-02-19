@@ -1,11 +1,10 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
 import { DatePicker } from 'antd-mobile-v2';
 import Icon from 'component/Icon';
 import { useRecords } from 'hook/useRecords';
-
 const Wrapper = styled.div`
 background-color:#FF9400;
 border-radius:0px  0px 40%  40% ;
@@ -66,7 +65,7 @@ const Month = () => {
   const { records }=useRecords()
   const [selectMonth, setSelectMonth] = useState<Date>(new Date())
   const currentMouth = day(selectMonth).format("YYYY-MM")
-  const selectMouthData = records.filter((r) => { return r.createdAt.indexOf(currentMouth) != -1 })
+  const selectMouthData = records.filter((r) => { return r.createdAt.indexOf(currentMouth) !== -1 })
   //选择月的总支出
   const selectMouthPay = selectMouthData.filter((c) => {return c.classification === "-" })
   let selectMouthPayMoney:number = 0
@@ -87,8 +86,8 @@ const Month = () => {
           <HaButton>{currentMouth} <Icon name="xiajiantou" /> </HaButton>
     </DatePicker>   
        <ol>
-        <li><span>本月支出</span>{selectMouthPayMoney}</li>
-        <li><span>本月收入</span>{ selectMouthInMoney}</li>
+        <li><span>本月支出</span> <p>{selectMouthPayMoney}</p></li>
+        <li><span>本月收入</span><p>{ selectMouthInMoney}</p></li>
       </ol>
        </MonthWrapper>
   </Wrapper>
