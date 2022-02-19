@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrapper } from "./NumberSeaction/Wrapper";
+import { Wrapper } from "./NumberSeaction/NumberSection";
 import Caculate from "./NumberSeaction/Caculate"
 type Props = {
   value:number ;
@@ -25,13 +25,13 @@ const NumberSecation: React.FC<Props> = (props) => {
     const text = (e.target as HTMLButtonElement).textContent
     if (text === null) { return }
     if (text === "") { return }
-     if (text === "保存") { 
+    if (text === "保存") { 
        if (props.onOk) {
          props.onOk()
        }
         return
      }
-    console.log(Caculate(text, output));
+    // console.log(Caculate(text, output));
     setOutput( Caculate(text, output)||"" )
   } 
 

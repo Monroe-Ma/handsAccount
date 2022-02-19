@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import day from "dayjs";
 import { DatePicker } from 'antd-mobile-v2';
 import Icon from 'component/Icon';
+import { useRecords } from 'hook/useRecords';
 
 const Wrapper = styled.div`
 background-color:#FF9400;
@@ -62,30 +63,32 @@ font-size: 16px;
 }
 `;
 const Month = () => { 
+  const { records }=useRecords()
+  const [selectMonth, setSelectMonth] = useState<Date>(new Date())
+  const currentMouth = day(selectMonth).format("YYYY-MM")
+  const selectMouthData = records.filter((r) => { return r.createdAt.indexOf(currentMouth) != -1 })
+  //选择月的总支出
+  const selectMouthPay = selectMouthData.filter((c) => {return c.classification === "-" })
+  let selectMouthPayMoney:number = 0
+  selectMouthPay.forEach((c) => { selectMouthPayMoney = selectMouthPayMoney + c.outputVal })
   
-  const currentTime =day(new Date()).format("YYYY-MM")
-  const [monthPicker, setMonthPicker] = useState<Date>()
-  console.log(monthPicker);
-  
+  //选择月的总收入
+  const selectMouthIn = selectMouthData.filter((c) => {return c.classification === "+" })
+  let selectMouthInMoney:number = 0
+  selectMouthIn.forEach((c) => { selectMouthInMoney = selectMouthInMoney + c.outputVal })
+
   return <Wrapper>
     <MonthWrapper>
-
     <DatePicker
           mode="month"
           extra="Optional"
-          onChange={date => setMonthPicker(date )}
+          onChange={date => setSelectMonth(date)}
         >
-          <HaButton>{currentTime } <Icon name="xiajiantou" /> </HaButton>
-    </DatePicker>
-
-         
-
-      {/* <Input label='' type='month' defaultValue={currentTime}
-          onChange={(e) => setCreatedAt(e.target.value)} /> */}
-    
+          <HaButton>{currentMouth} <Icon name="xiajiantou" /> </HaButton>
+    </DatePicker>   
        <ol>
-         <li><span>本月支出</span>2380280.00</li>
-         <li><span>本月收入</span>2380280.00</li>
+        <li><span>本月支出</span>{selectMouthPayMoney}</li>
+        <li><span>本月收入</span>{ selectMouthInMoney}</li>
       </ol>
        </MonthWrapper>
   </Wrapper>

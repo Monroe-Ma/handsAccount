@@ -95,10 +95,6 @@ const Monthly = () => {
     return 0;
   })
 
-  selectCategory.forEach(() => { 
-    // if () { }
-  })
-
   const DateHeader = styled.h4`
    padding:10px;
    background-color: #f4f4f4;
@@ -115,17 +111,17 @@ const Monthly = () => {
             {time}
         </DateHeader>
         <Bill>
-          {records.map((r) => {
-            return <li  key={r.createdAt}>
+          {records.map((r,index) => {
+            return <li  key={index}>
               <div className='listName'>
                 <span className='iconBg'>
                    <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
                 </span>
                 <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
-               <div className='showRow'>
+                    <i className='showRow'>
                     <span>{day(r.createdAt).format("HH:mm:ss")} </span>
                     <span> | {r.note}</span>
-               </div>
+               </i>
                 </p>
                 </div>
                 <div className='account'>

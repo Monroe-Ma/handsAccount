@@ -90,11 +90,15 @@ const Analysis = () => {
       '收入': incomeAllMoney
     });
   }
-//  const ccc = needObjArr.sort((a, b) => {
-//       if (a.month === b.month) return 0;
-//   if (a.month  >  b.month) return -1;
-//   if (a.month  < b.month) return 1;
-//    })
+  
+     needObjArr.sort((a, b) => {
+      if (a.month === b.month) return 0;
+      if (a.month  >  b.month) return 1;
+      if (a.month < b.month) return -1;
+   return 0;
+   })
+   
+  
   const expendOption = {
     title: {
       text: '本月支出占比分析',
@@ -190,10 +194,6 @@ const Analysis = () => {
   },
     xAxis: {
       type: 'category',
-      //  axisLabel: {  
-      //      interval:0,  
-      //      rotate:40  
-      //  },
     },
     dataZoom: [
     {
@@ -203,33 +203,13 @@ const Analysis = () => {
         filterMode: 'filter',
         start: 80,
     },
-  
 ],
   yAxis: { type: 'value'},
     series: [
-      { type: 'bar',
-     
-      },
-      
-      {
-        type: 'bar',
-        //   itemStyle: {
-        //   color: function (params: any) {//柱状体颜色
-        //     // build a color map as your need.
-        //     var colorList = [
-        //       '#AE54B5'
-        //     ];
-        //     return colorList[params.dataIndex]
-        //   }
-        // }
-      },
-    
-    
+      { type: 'bar' },
+      { type: 'bar'},
     ]
 };
-
-
-
   return (
     <Layout title="统计分析">
       <ContrastEcharts option={contrastOption} />
