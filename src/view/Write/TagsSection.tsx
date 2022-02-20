@@ -15,16 +15,18 @@ const Wrapper = styled.section`
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      height:200px;
+      height:318px;
       padding: 10px 0;
       width: 100%;
     >li{
-     
-      width: 20%;
+      width: 18%;
       padding:20px;
       color: #666;
       font-size: 14px;
       line-height: 22px;
+      >p{
+        margin-top: 6px;
+      }
       >span{
         display: block;
         width: 28px;
@@ -77,10 +79,11 @@ const TagsSection: React.FC<Props> = (props) => {
             ><span
                 className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ""}
                ><Icon name={tag.iconName }
-            /></span>{tag.name}
+                /></span>
+              <p>{tag.name}</p>
             </li> 
         )}
-        <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
+        <li onClick={addTag}><span><Icon name="add"/></span> <p>添加</p></li>
         </ul> 
     </Wrapper>
   )

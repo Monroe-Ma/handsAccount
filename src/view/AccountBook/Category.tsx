@@ -5,19 +5,18 @@ type Props = {
   onChange: (value: "o" | "-" | "+")=>void
 }
 const Wrapper = styled.ol`
-display: flex;
-   
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
     color: #999;  
-    border-radius: 4px;
-    justify-content: center;
-    border-radius: 4px;
+    background: #EEEEEE;
+    border-radius: 6px;
     >li{
-       background: #EEEEEE;
-      padding: 9px 36px;
+      padding: 12px 30px;
       &.selected{
         background:#FFB101;
         color: #fff;
-         border-radius: 4px;
+         border-radius: 6px;
       }
     }
 `;

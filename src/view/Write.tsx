@@ -24,18 +24,19 @@ const Handle = styled.div`
   margin-top:10px;
   justify-content: space-between;
   background-color: #fff;
-    margin-top: 10px;
-    padding: 10px;
+  margin-top: 10px;
+  padding: 10px;
   `;
 const Button = styled.button`
   background-color: #fff;
+  font-size: 18px;
   padding:10px 20px ;
   display: flex;
   align-items:center;
   border: 1px solid #eee;
- margin-left: 10px;
- color:#333;
- border-radius: 6px;
+  margin-left: 10px;
+  color:#333;
+  border-radius: 6px;
   .icon{
   fill:#999;
   margin-left: 10px;

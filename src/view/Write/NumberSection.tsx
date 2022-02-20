@@ -51,7 +51,7 @@ const zero = document.getElementById("zero")
       <button>7</button>
       <button>8</button>
       <button>9</button>
-      <button id='save' style={{height:zeroHeight*2+2+'px'}}>保存</button>
+      <button id='save' style={{height:zeroHeight*2+4+'px'}}>保存</button>
       <button id='zero'>0</button>
       <button>.</button>
       </div>

@@ -53,7 +53,32 @@ const useTag = () => {
       id: creatId(),
       name: "文教",
       iconName:"education"
-    }, 
+         }, 
+    {
+      id: creatId(),
+      name: "保险",
+      iconName:"insurance"
+         }, 
+    {
+      id: creatId(),
+      name: "酒店",
+      iconName:"hotel"
+         }, 
+    {
+      id: creatId(),
+      name: "转账",
+      iconName:"count"
+         }, 
+    {
+      id: creatId(),
+      name: "旅游",
+      iconName:"lvyou"
+         },
+       {
+      id: creatId(),
+      name: "运动",
+      iconName:"sport"
+    },
     ]
     }
     setTag(localStorage)
@@ -68,7 +93,7 @@ const useTag = () => {
       }
    }
   const findTag = (id: number) => {
-    // console.log(tags, id)
+    console.log(tags, id)
      return tags.filter(tag => tag.id === id)[0]
   }
   const indexOfTag = (id: number) => {

@@ -7,13 +7,8 @@ import day from "dayjs"
 import Category from './Category';
 const Preparation = styled.div`
 margin:17px 10px;
-  >div{
-  font-size: 18px;
-  >span{
-    font-size:12px;
-    color: #666;
-  }
-}
+display: flex;
+justify-content: center;
 `;
 const Bill = styled.ul`
   background: #fff;
@@ -77,7 +72,6 @@ const Monthly = () => {
       return r
     }
   })
-  // console.log(records);
   const hash:{[K: string]:RecordsItem[]} = {}
   selectCategory.forEach((r) => { 
     const key = day(r.createdAt).format("MM月DD日")
@@ -124,7 +118,7 @@ const Monthly = () => {
             <Icon name='noRecords' />
             <p>暂无记录</p>
       </NoRecords> : 
-      array&&array.map(([time, records], i) => 
+      array.map(([time, records], i) => 
         <div key={i}>
           <DateHeader>
             {time}
@@ -137,10 +131,10 @@ const Monthly = () => {
                    <Icon name={(r.tagIds.map((tagIds) => getIconName(tagIds))[0])} />
                 </span>
                 <p>{r.tagIds.map((tagIds) => getTagName(tagIds))[0]}
-                    <p className='showRow'>
+                    <span className='showRow'>
                     <span>{day(r.createdAt).format("HH:mm:ss")} </span>
                     <span> | {r.note}</span>
-               </p>
+               </span>
                 </p>
                 </div>
                 <div className='account'>
@@ -150,7 +144,7 @@ const Monthly = () => {
           })}
            </Bill>
         </div>
-      ) || <div></div>
+      ) 
     }
   </div >
 }

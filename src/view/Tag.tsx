@@ -5,6 +5,12 @@ import { useHistory, useParams } from "react-router-dom"
 import styled from 'styled-components';
 import Icon from '../component/Icon';
 import { Input } from 'component/Input';
+
+const WrapperInput = styled.div`
+ background-color: #fff;
+ padding: 10px 0;
+ margin:10px 0;
+`;
 const Button = styled.div`
 display: flex;
 justify-content: space-evenly;
@@ -15,10 +21,10 @@ right: 0;
   >button{
     background-color: #FF9400;
     color: #fff;
-    padding: 8px 48px;
+    padding: 14px 48px;
     border: none;
-    border-radius: 4px;
-  
+    border-radius: 100px;
+  font-size: 18px;
   }
   >.cancel{
     border:2px solid #FF9400;
@@ -66,10 +72,12 @@ const Tag = () => {
   }
   const tagContext = () => (
     <div>
+      <WrapperInput>
       <Input label={'标签名'}
         value={tag.name}
         onChange={(e) => { updateTag(tag.id, { name: e.target.value}) }}
-      />
+        />
+        </WrapperInput>
       <Button>
         <button className="cancel" onClick={()=>deleteTag(tag.id) }>删除</button>
         <button onClick={onClickBack}>保存</button>

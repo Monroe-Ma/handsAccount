@@ -11,7 +11,6 @@ display: block;
     border: none;
     font-weight: 400;
     margin-left: 6px;
-    input[type=month]::-webkit-inner-spin-button{visibility: hidden;}
   }
 
 `;
