@@ -4,7 +4,6 @@ import React from 'react';
 import { useHistory, useParams } from "react-router-dom"
 import styled from 'styled-components';
 import Icon from '../component/Icon';
-import { Input } from 'component/Input';
 
 const Wrapper = styled.div`
  background-color: #fff;
