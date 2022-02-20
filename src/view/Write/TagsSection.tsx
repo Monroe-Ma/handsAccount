@@ -4,16 +4,24 @@ import styled from 'styled-components';
 import Icon from '../../component/Icon';
 
 const Wrapper = styled.section`
-flex-grow: 1;
+/* flex-grow: 1; */
   background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+     display: flex;
+    flex-wrap:Nowrap;
   >ul{
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      height:200px;
+      padding: 10px 0;
+      width: 100%;
     >li{
+     
       width: 20%;
-      padding:0 20px;
-      padding-top: 20px;
+      padding:20px;
       color: #666;
       font-size: 14px;
       line-height: 22px;
@@ -59,6 +67,7 @@ const TagsSection: React.FC<Props> = (props) => {
   }
   return (
     <Wrapper>
+     
       <ul>
         {tags.map(
           tag =>
@@ -72,7 +81,7 @@ const TagsSection: React.FC<Props> = (props) => {
             </li> 
         )}
         <li onClick={addTag}><span><Icon name="add"/></span>添加</li>
-         </ul> 
+        </ul> 
     </Wrapper>
   )
 }

@@ -3,6 +3,7 @@ import React, {  ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+flex-grow: 1;
   background:#f6f6f6 ;
   padding: 10px 0;
 `;

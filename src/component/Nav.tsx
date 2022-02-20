@@ -32,15 +32,6 @@ background: #fff;
 
 const Nav = () => {
 
-  // const handleActive = (match: any, location: any) => {
-  //   if (!match) {
-  //     return false;
-  //   }
-  //   // console.log(match, location);
-    
-  //   return true;
-  // }
-
   return<div>
     <NavWrapper>
       <ul>

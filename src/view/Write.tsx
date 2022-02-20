@@ -7,7 +7,6 @@ import TagsSection from "./Write/TagsSection"
 import NoteSection from "./Write/NoteSection"
 import NumberSection from './Write/NumberSection';
 import { useRecords } from 'hook/useRecords';
-import { Input } from 'component/Input';
 import day from 'dayjs';
 import { Alert } from 'pile-ui'
 import { DatePicker } from 'antd-mobile-v2';
@@ -35,6 +34,8 @@ const Button = styled.button`
   align-items:center;
   border: 1px solid #eee;
  margin-left: 10px;
+ color:#333;
+ border-radius: 6px;
   .icon{
   fill:#999;
   margin-left: 10px;
@@ -77,10 +78,11 @@ const Write: React.FC = () => {
   } 
 
 
-const [selectMonth, setSelectMonth] = useState<Date>(new Date())
+  const [selectMonth, setSelectMonth] = useState<Date>(new Date())
+  console.log(selectMonth);
+  
   return (
     <MyLayout title="记一笔">
-      
       <Output
         value={outputVal}
         onChange={setOutputVal}
@@ -90,23 +92,21 @@ const [selectMonth, setSelectMonth] = useState<Date>(new Date())
         onChange={(tagIds) => onChange({tagIds})}
       >
       </TagsSection >
+
       <Handle>
-      <DatePicker
+        <DatePicker
           mode="date"
           extra="Optional"
-           onChange={date => setSelectMonth(date)}
+          onChange={date => setSelectMonth(date)}
         >
             <Button value={outputVal}
             >{defaultData.createdAt} <Icon name='xiajiantou' /></Button>
-
-  
-     </DatePicker>
-     
-      <ClassiFication
+        </DatePicker>
+        <ClassiFication
         value={selected.classification}
         onChange={(classification: "+" | "-") => onChange( {classification} )}
-      >
-      </ClassiFication >
+         >
+        </ClassiFication >
       </Handle> 
 
       <NoteSection

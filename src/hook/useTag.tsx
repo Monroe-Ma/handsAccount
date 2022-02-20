@@ -6,11 +6,9 @@ type tagDataType = {
    name: string
    iconName?:string
 }
-// const defaultTagData = 
 const useTag = () => {
   const [tags, setTag] = useState<tagDataType[]>([])
   useEffect(() => { 
-    // setTag(JSON.parse(window.localStorage.getItem("tags") || "[]"))
    let localStorage = JSON.parse(window.localStorage.getItem("tags") || "[]")
     if (localStorage.length ===0) {
        localStorage = [
@@ -84,10 +82,6 @@ const useTag = () => {
     }
   }
   const updateTag = (id: number, obj: { name: string },) => {
-    // const index = indexOfTag(id)
-    // const tagClone = JSON.parse(JSON.stringify(tags))
-    // tagClone.splice(index, 1, { id: id, name: obj.name })
-    // setTag(tagClone)
     setTag(tags.map(tag => tag.id === id ? { id, name: obj.name, iconName:tag.iconName } : tag),)
   }
   const getIconName = (id: number) => { 
@@ -99,10 +93,6 @@ const useTag = () => {
     return  tag ? tag.name: ""
   }
   const deleteTag = (id: number) => {
-    // const index = indexOfTag(id)
-    // const tagClone = JSON.parse(JSON.stringify(tags))
-    // tagClone.splice(index)
-    // setTag(tagClone)
     setTag(tags.filter(tag=> tag.id!==id))
   }
   

@@ -4,12 +4,12 @@ const Wrapper = styled.section`
   background:#fff;
   padding-top: 15px;
   div{
-    font-size: 22px;
+    font-size: 32px;
     color: #FD9300;
     font-weight: 600;
     margin:0 10px;
     padding-bottom: 6px ;
-    padding-top: 14px;
+    padding: 14px;
     border-bottom: solid 1px #eee;
     span{
       font-size: 12px;
