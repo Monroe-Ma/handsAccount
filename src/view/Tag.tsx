@@ -6,10 +6,22 @@ import styled from 'styled-components';
 import Icon from '../component/Icon';
 import { Input } from 'component/Input';
 
-const WrapperInput = styled.div`
+const Wrapper = styled.div`
  background-color: #fff;
- padding: 10px 0;
+ padding: 16px 0;
  margin:10px 0;
+ >span{
+    font-size: 17px;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 0;
+  margin-left: 20px;
+ }
+ >input{
+   border: none;
+   font-size: 17px;
+   margin-left: 10px;
+ }
 `;
 const Button = styled.div`
 display: flex;
@@ -71,18 +83,17 @@ const Tag = () => {
   history.goBack()
   }
   const tagContext = () => (
-    <div>
-      <WrapperInput>
-      <Input label={'标签名'}
+    <Wrapper>
+     <span>标签名</span>
+      <input
         value={tag.name}
         onChange={(e) => { updateTag(tag.id, { name: e.target.value}) }}
         />
-        </WrapperInput>
       <Button>
         <button className="cancel" onClick={()=>deleteTag(tag.id) }>删除</button>
         <button onClick={onClickBack}>保存</button>
       </Button>
-      </div>
+      </Wrapper>
   )
     return <Layout title="编辑标签">
       {tag ? tagContext() :

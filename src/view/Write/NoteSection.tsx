@@ -18,7 +18,7 @@ const NoteSeaction: React.FC<Props> = (props) => {
     }
   return (
     <Wrapper>
-      <Input label='备注' placeholder="请输入备注" value={note} onChange={onChange}/>
+      <Input label=' ' placeholder="请输入备注" value={note} onChange={onChange}/>
     </Wrapper>
   )
 }

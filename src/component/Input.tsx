@@ -5,12 +5,18 @@ display: block;
   font-size: 17px;
   color: #333;
   font-weight: 600;
-  padding: 10px 20px;
+  background-color: #fff;
+  padding: 10px 0;
+  >p{
+    margin-left: 20px;
+  }
   >input{
     background: none;
     border: none;
     font-weight: 400;
-    margin-left: 6px;
+    margin: 0 20px ;
+    margin-top: 10px;
+    width: 80%;
   }
 
 `;
@@ -23,7 +29,8 @@ const Input: React.FC<Props> = (props) => {
   const { label,children,...rest} =props
   return <Label >
     {props.label}
-    <input {...rest} />
+    <p>备注</p>
+    <input className='oneLine' {...rest} />
       </Label>
 
 }
