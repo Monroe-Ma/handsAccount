@@ -11,8 +11,7 @@ import day from 'dayjs'
 import { Alert } from 'pile-ui'
 import { DatePicker } from 'antd-mobile-v2'
 import Icon from 'component/Icon'
-import './common.scss'
-
+import px2vw from '.././lib/px2vw'
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
@@ -21,25 +20,24 @@ const Handle = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: ${px2vw(20)};
   justify-content: space-between;
   background-color: #fff;
-  margin-top: 10px;
-  padding: 10px;
+  padding: ${px2vw(20)};
 `
 const Button = styled.button`
   background-color: #fff;
-  font-size: 18px;
-  padding: px2vw(20);
+  font-size: ${px2vw(32)};
+  padding: ${px2vw(20)};
   display: flex;
   align-items: center;
   border: 1px solid #eee;
-  margin-left: 10px;
+  margin-left: ${px2vw(10)};
   color: #333;
-  border-radius: 6px;
+  border-radius: ${px2vw(6)};
   .icon {
     fill: #999;
-    margin-left: 10px;
+    margin-left: ${px2vw(10)};
   }
 `
 type classification = '+' | '-'

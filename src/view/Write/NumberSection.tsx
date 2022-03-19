@@ -35,12 +35,10 @@ const NumberSecation: React.FC<Props> = (props) => {
       }
       return
     }
-    // console.log(Caculate(text, output));
+
     setOutput(Caculate(text, output) || '')
   }
 
-  const zero = document.getElementById('zero')
-  const zeroHeight = zero?.offsetHeight ?? 50
   return (
     <Wrapper>
       <div className="pad clearfix" onClick={padWrapper}>
