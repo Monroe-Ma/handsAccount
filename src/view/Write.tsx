@@ -1,130 +1,116 @@
-import React, { useState } from 'react';
-import Layout from 'component/Layout';
-import styled from 'styled-components';
-import ClassiFication from "./Write/ClassiFication"
-import Output from "./Write/Output"
-import TagsSection from "./Write/TagsSection"
-import NoteSection from "./Write/NoteSection"
-import NumberSection from './Write/NumberSection';
-import { useRecords } from 'hook/useRecords';
-import day from 'dayjs';
+import React, { useState } from 'react'
+import Layout from 'component/Layout'
+import styled from 'styled-components'
+import ClassiFication from './Write/ClassiFication'
+import Output from './Write/Output'
+import TagsSection from './Write/TagsSection'
+import NoteSection from './Write/NoteSection'
+import NumberSection from './Write/NumberSection'
+import { useRecords } from 'hook/useRecords'
+import day from 'dayjs'
 import { Alert } from 'pile-ui'
-import { DatePicker } from 'antd-mobile-v2';
-import Icon from 'component/Icon';
-
+import { DatePicker } from 'antd-mobile-v2'
+import Icon from 'component/Icon'
+import './common.scss'
 
 const MyLayout = styled(Layout)`
-display: flex;
-flex-direction: column;
-`;
+  display: flex;
+  flex-direction: column;
+`
 const Handle = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  margin-top:10px;
+  margin-top: 10px;
   justify-content: space-between;
   background-color: #fff;
   margin-top: 10px;
   padding: 10px;
-  `;
+`
 const Button = styled.button`
   background-color: #fff;
   font-size: 18px;
-  padding:10px 20px ;
+  padding: px2vw(20);
   display: flex;
-  align-items:center;
+  align-items: center;
   border: 1px solid #eee;
   margin-left: 10px;
-  color:#333;
+  color: #333;
   border-radius: 6px;
-  .icon{
-  fill:#999;
-  margin-left: 10px;
+  .icon {
+    fill: #999;
+    margin-left: 10px;
   }
-`;
-type classification = "+" | "-";
+`
+type classification = '+' | '-'
 const defaultData = {
-  classification: "-" as classification,
+  classification: '-' as classification,
   tagIds: [] as number[],
-  note: "" as string,
- createdAt:  day(new Date()).format("YYYY-MM-DD") as string
+  note: '' as string,
+  createdAt: day(new Date()).format('YYYY-MM-DD') as string,
 }
-const Write: React.FC = () => { 
+const Write: React.FC = () => {
   const [selected, setSelected] = useState(defaultData)
-  const [outputVal, setOutputVal] = useState<number>(0.00)
-  const [createdAt,setCreatedAt] = useState(day(new Date()).format("YYYY-MM-DD"))
+  const [outputVal, setOutputVal] = useState<number>(0.0)
+  const [createdAt, setCreatedAt] = useState(
+    day(new Date()).format('YYYY-MM-DD')
+  )
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
-      ...obj
+      ...obj,
     })
   }
 
-  const{ addRecounts }=useRecords()
-  const submit = () => { 
-    // console.log(selected, outputVal)
-    if (addRecounts({ ...selected, outputVal: Number(outputVal), createdAt })) { 
-    Alert.show({
-      title: '保存成功',
-      btnText:'确定',
-      type:'success',
-      callBack: function() {
-        console.log('关闭了...');
-      }
-    })
-      setSelected(defaultData);
+  const { addRecounts } = useRecords()
+  const submit = () => {
+    if (addRecounts({ ...selected, outputVal: Number(outputVal), createdAt })) {
+      Alert.show({
+        title: '保存成功',
+        btnText: '确定',
+        type: 'success',
+        callBack: function () {
+          console.log('关闭了...')
+        },
+      })
+      setSelected(defaultData)
       setOutputVal(0)
-      setCreatedAt(day(new Date()).format("YYYY-MM-DD"))
+      setCreatedAt(day(new Date()).format('YYYY-MM-DD'))
     }
-  } 
-
+  }
 
   const [selectMonth, setSelectMonth] = useState<Date>(new Date())
-  console.log(selectMonth);
-  
+
   return (
     <MyLayout title="记一笔">
-      <Output
-        value={outputVal}
-        onChange={setOutputVal}
-      />
+      <Output value={outputVal} onChange={setOutputVal} />
       <TagsSection
         value={selected.tagIds}
-        onChange={(tagIds) => onChange({tagIds})}
-      >
-      </TagsSection >
+        onChange={(tagIds) => onChange({ tagIds })}
+      ></TagsSection>
 
       <Handle>
         <DatePicker
           mode="date"
           extra="Optional"
-          onChange={date => setSelectMonth(date)}
+          onChange={(date) => setSelectMonth(date)}
         >
-            <Button value={outputVal}
-            >{defaultData.createdAt} <Icon name='xiajiantou' /></Button>
+          <Button value={outputVal}>
+            {defaultData.createdAt} <Icon name="xiajiantou" />
+          </Button>
         </DatePicker>
         <ClassiFication
-        value={selected.classification}
-        onChange={(classification: "+" | "-") => onChange( {classification} )}
-         >
-        </ClassiFication >
-      </Handle> 
+          value={selected.classification}
+          onChange={(classification: '+' | '-') => onChange({ classification })}
+        ></ClassiFication>
+      </Handle>
 
       <NoteSection
         value={selected.note}
-        onChange={(note) => onChange({note})}
+        onChange={(note) => onChange({ note })}
       />
-      <NumberSection
-        value={outputVal}
-        onChange={setOutputVal}
-        onOk={submit}
-      />
-      </MyLayout>
-
+      <NumberSection value={outputVal} onChange={setOutputVal} onOk={submit} />
+    </MyLayout>
   )
 }
 export default Write
-
-
-
-
