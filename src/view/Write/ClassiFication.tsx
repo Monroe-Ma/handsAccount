@@ -10,7 +10,7 @@ const Wrapper = styled.section`
     color: #999;
     > li {
       font-size: ${px2vw(32)};
-      font-weight: 500;
+      font-weight: 600;
       color: #999;
       position: relative;
       padding: ${px2vw(20)} ${px2vw(48)};
